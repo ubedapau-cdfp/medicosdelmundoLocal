@@ -58,16 +58,16 @@ function textoASlug($texto) {
  */
 function obtenerRutaImagen($titulo, $carpeta) {
     $baseNombre = textoASlug($titulo);
-    // Añadimos .jfif a la lista ya que lo usas en Tipos de Contrato según tu SQL
     $extensiones = ['.jpg', '.jpeg', '.png', '.webp', '.jfif'];
     
     foreach ($extensiones as $ext) {
-        $ruta = $carpeta . $baseNombre . $ext;
-        if (file_exists($ruta)) {
-            return $ruta;
+        $rutaRelativa = $carpeta . $baseNombre . $ext;
+        $rutaFisica = __DIR__ . DIRECTORY_SEPARATOR . str_replace('/', DIRECTORY_SEPARATOR, $rutaRelativa);
+        if (is_file($rutaFisica)) {
+            return $rutaRelativa;
         }
     }
-    return "Imagenes/Categorias/default.jpg";
+    return null;
 }
 
 // Imagen principal del banner
@@ -93,7 +93,7 @@ $imagenPrincipal = obtenerRutaImagen($categoria->getTitulo(), 'Imagenes/Contenid
         <p><?php echo htmlspecialchars($categoria->getDescripcion()); ?></p>
     </div>
     
-    <?php if (file_exists($imagenPrincipal) && !strpos($imagenPrincipal, 'default.jpg')): ?>
+    <?php if ($imagenPrincipal !== null): ?>
     <div class="contenido-imagen">
         <img src="<?php echo htmlspecialchars($imagenPrincipal); ?>" alt="<?php echo htmlspecialchars($categoria->getTitulo()); ?>">
     </div>
