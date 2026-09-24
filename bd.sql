@@ -1,4 +1,11 @@
--- Opcional: Borrar tablas si existen (en orden inverso de dependencia)
+CREATE DATABASE IF NOT EXISTS medicosDelMundo
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_unicode_ci;
+USE medicosDelMundo;
+
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- Borrar tablas si existen (en orden inverso de dependencia)
 DROP TABLE IF EXISTS contenido;
 DROP TABLE IF EXISTS BLOQUE;
 DROP TABLE IF EXISTS FAQ;
@@ -6,15 +13,17 @@ DROP TABLE IF EXISTS CATEGORIA;
 DROP TABLE IF EXISTS USUARIOS;
 DROP TABLE IF EXISTS ROL;
 
+SET FOREIGN_KEY_CHECKS = 1;
+
 -- 1. Tabla de Roles
 CREATE TABLE ROL (
-    id_rol SERIAL PRIMARY KEY,
+    id_rol INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nombre_rol VARCHAR(50) NOT NULL
 );
 
 -- 2. Tabla de Usuarios
 CREATE TABLE USUARIOS (
-    id_usuario SERIAL PRIMARY KEY,
+    id_usuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(100) UNIQUE NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
     nombre VARCHAR(100),
@@ -23,7 +32,7 @@ CREATE TABLE USUARIOS (
 
 -- 3. Tabla de Categoría
 CREATE TABLE CATEGORIA (
-    id_categoria SERIAL PRIMARY KEY,
+    id_categoria INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(100) NOT NULL,
     descripcion TEXT,
     icono VARCHAR(255),
@@ -33,7 +42,7 @@ CREATE TABLE CATEGORIA (
 
 -- 4. Tabla de FAQ (Depende de CATEGORIA)
 CREATE TABLE FAQ (
-    id_faq SERIAL PRIMARY KEY,
+    id_faq INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     pregunta TEXT NOT NULL,
     respuesta TEXT NOT NULL,
     fecha_actualizacion DATE DEFAULT CURRENT_DATE,
@@ -42,7 +51,7 @@ CREATE TABLE FAQ (
 
 -- 5. Tabla de Bloque (Depende de CATEGORIA)
 CREATE TABLE BLOQUE (
-    id_bloque SERIAL PRIMARY KEY,
+    id_bloque INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(100),
     subtitulo VARCHAR(100),
     contenido TEXT,
@@ -53,7 +62,7 @@ CREATE TABLE BLOQUE (
 
 -- 6. Tabla de Contenido (Depende de BLOQUE)
 CREATE TABLE contenido (
-    id_url SERIAL PRIMARY KEY,
+    id_url INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     url_externas VARCHAR(255),
     id_bloque INT REFERENCES BLOQUE(id_bloque)
 );
@@ -380,14 +389,14 @@ INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES
 
 -- Asignación de imágenes a las categorías y subcategorías
 INSERT INTO contenido (url_externas, id_bloque) VALUES
-('Imagenes/Contenidos/derechos-del-trabajador.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Mis Derechos Iniciales' AND id_categoria = 1 LIMIT 1)),
+('Imagenes/Contenidos/mis-derechos-iniciales.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Mis Derechos Iniciales' AND id_categoria = 1 LIMIT 1)),
 ('Imagenes/Contenidos/proteccion-y-cambios.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Protección y Cambios' AND id_categoria = 2 LIMIT 1)),
 ('Imagenes/Contenidos/mi-salario-y-mi-nomina.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Mi Salario y mi Nómina' AND id_categoria = 4 LIMIT 1)),
 ('Imagenes/Contenidos/ser-trabajadora.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Ser Trabajadora' AND id_categoria = 11 LIMIT 1)),
 ('Imagenes/Contenidos/edad-y-nacionalidad.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Edad y Nacionalidad' AND id_categoria = 12 LIMIT 1)),
 ('Imagenes/Contenidos/tipos-de-contrato.jfif', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Tipos de Contrato' AND id_categoria = 13 LIMIT 1)),
 ('Imagenes/Contenidos/jornada-y-descanso.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Jornada y Descanso' AND id_categoria = 14 LIMIT 1)),
-('Imagenes/Contenidos/cambios-y-condiciones.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Cambios de Condiciones' AND id_categoria = 21 LIMIT 1)),
+('Imagenes/Contenidos/cambios-de-condiciones.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Cambios de Condiciones' AND id_categoria = 21 LIMIT 1)),
 ('Imagenes/Contenidos/maternidad-y-pausas.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Maternidad y Pausas' AND id_categoria = 22 LIMIT 1)),
 ('Imagenes/Contenidos/despido-y-cierre.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Despido y Cierre' AND id_categoria = 23 LIMIT 1)),
 ('Imagenes/Contenidos/finiquito-y-liquidacion.png', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Finiquito y Liquidación' AND id_categoria = 24 LIMIT 1)),
@@ -412,11 +421,3 @@ WHERE id_categoria = 14;
 DELETE FROM CATEGORIA 
 WHERE id_categoria = 14;
 
--- Sincroniza la secuencia de la tabla CATEGORIA
-SELECT setval('categoria_id_categoria_seq', (SELECT MAX(id_categoria) FROM CATEGORIA));
-
--- Sincroniza la secuencia de la tabla ROL
-SELECT setval('rol_id_rol_seq', (SELECT MAX(id_rol) FROM ROL));
-
--- Sincroniza la secuencia de la tabla USUARIOS
-SELECT setval('usuarios_id_usuario_seq', (SELECT MAX(id_usuario) FROM USUARIOS));
