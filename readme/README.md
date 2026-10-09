@@ -1,6 +1,8 @@
 # reto4-medicosdelmundo
 Repositorio del Reto 4 del Campus Digital FP, DAW, para la ONG Médicos del Mundo.
 
+El sitio se ofrece ahora como páginas HTML y CSS estáticas. La portada es `index.html` y la guía laboral está en `contenidos.html`; las categorías y preguntas frecuentes son una instantánea de los datos incluidos en `bd.sql`. El inicio de sesión, las sesiones, la administración y la conexión a base de datos ya no están disponibles en esta versión.
+
 La página de la ONG se puede visitar aquí: https://www.medicosdelmundo.org/
 
 Este repositorio está protegido por el Creative Commons Attribution-NoDerivs-NonCommercial 1.0 Generic.

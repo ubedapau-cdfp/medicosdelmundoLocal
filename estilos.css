@@ -42,6 +42,67 @@
     gap: 15px; /* HUECO DE 15 PÍXELES ENTRE APARTADOS */
 }
 
+.imagenes img, .imagenes2 img {
+    flex: 1 1 400px;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+}
+
+.pagina-inicio {
+    margin-bottom: 0;
+}
+
+.pagina-inicio .footer {
+    position: static;
+}
+
+.static-notice {
+    max-width: 900px;
+    margin: 48px auto;
+    padding: 32px;
+    border-left: 6px solid #005daa;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    line-height: 1.7;
+}
+
+.static-notice h1,
+.static-notice h2 {
+    margin-bottom: 16px;
+    color: #010979;
+}
+
+.static-notice p + p,
+.static-notice ul {
+    margin-top: 12px;
+}
+
+.static-notice a {
+    color: #005daa;
+}
+
+.category-index {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 16px;
+    list-style: none;
+}
+
+.category-index li {
+    padding: 12px;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.category-index a {
+    color: #00065f;
+    font-weight: bold;
+    text-decoration: none;
+}
+
 /* ----------------------- ESTILOS GENERAL ---------------------------------- */
 /* MÁRGENES GENERALES */
 * {
@@ -433,7 +494,7 @@ button[type=submit]:not(.savebutton):not(.deletebutton):hover{
     cursor:pointer; /* DETECCIÓN DEL CURSOR AL PASAR SOBRE EL BOTÓN */
 }
 
-/*  SIGNIN.php  */
+/*  INICIO DE SESIÓN  */
 body.login-body {
     overflow: hidden;
     height: 100vh;
