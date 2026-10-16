@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inicio de Sesión</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="Imagenes/logo.png">
+</head><!-- Apartado de login heredado del otro proyecto -->
+    <body class="login-body"> <!-- Inicio del body -->
+    <section class="loginMenu"> <!-- Inicio del section loginMenu -->
+        <section class="ladoIzqdo"> <!-- Inicio del section ladoIzqdo -->
+            <p></p> <!-- Separador -->
+        </section> <!-- Cierre del section ladoIzqdo -->
+        <section class="ladoDcho"> <!-- Inicio del section ladoDcho -->
+            <section class="menuform"> <!-- Inicio del section menuform -->
+                <h1 class="h1login">Inicio de Sesión</h1> <!-- Párrafo de texto estilo h1 que sirve como título -->
+                &nbsp; <!-- Non-Breaking Space. Proporciona saltos de línea, con un espacio. -->
+                <form action='' method='POST'> <!-- Inicio de formulario con método POST -->
+                    <label for='usuaria'>Nombre de usuaria:</label> <!-- Texto para identificar el apartado 'Nombre' -->
+                    <p></p> <!-- Separador -->
+                    <input type='text' name='usuaria' id='usuaria' size='70' placeholder=' Usuaria' required> <!-- Campo de texto del apartado 'Nombre' obligatorio -->
+                    <p></p> <!-- Separador -->
+                    <label for='contrasena'>Contraseña:</label> <!-- Texto para identificar el apartado 'Contrasena' -->
+                    <p></p> <!-- Separador -->
+                    <input type='password' name='contrasena' size='70' id='contrasena' placeholder=' •••••••' required> <!-- Campo de texto del apartado 'Contrasena' obligatorio -->
+                    <p></p> <!-- Separador -->
+                    <div class="button-group">
+                        <button type='submit' class="defaultbutton"><a href='#'></a>Iniciar Sesión</button> <!-- Botón para iniciar sesión -->
+                        <button type='submit' class="defaultbutton"><a href='index.html'>Volver a Inicio</a></button> <!-- Botón con enlace que redirecciona a index.php -->
+                    </div>
+                    <p></p> <!-- Separador -->
+                </form> <!-- Cierre del formulario -->
+            </section> <!-- Cierre del section menuform -->
+        </section> <!-- Cierre del section ladoDcho -->
+    </section> <!-- Cierre del section loginMenu -->
+</body> <!-- Cierre del body -->
+</html>
