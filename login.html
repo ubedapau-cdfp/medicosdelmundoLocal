@@ -26,7 +26,17 @@
                     <p></p> <!-- Separador -->
                     <label for='contrasena'>Contraseña:</label> <!-- Texto para identificar el apartado 'Contrasena' -->
                     <p></p> <!-- Separador -->
-                    <input type='password' name='contrasena' size='70' id='contrasena' placeholder=' •••••••' required> <!-- Campo de texto del apartado 'Contrasena' obligatorio -->
+                    <!-- Agrupa el campo y el botón para que el ojo pueda colocarse encima del campo. -->
+                    <div class='password-field'>
+                        <!-- type='password' oculta lo escrito. El id permite que JavaScript encuentre este campo. -->
+                        <input type='password' name='contrasena' size='70' id='contrasena' placeholder=' •••••••' required> <!-- Campo de texto del apartado 'Contrasena' obligatorio -->
+                        <!-- type='button' evita que este botón envíe el formulario. Su id lo conecta con JavaScript. -->
+                        <!-- aria-label ayuda a los lectores de pantalla y title muestra una descripción al dejar el cursor encima. -->
+                        <button type='button' class='password-toggle is-hidden' id='mostrarContrasena' aria-label='Mostrar contraseña' title='Mostrar contraseña' onclick='cambiarContrasena()'>
+                            <!-- Estos elementos vacíos forman el ojo con CSS; aria-hidden evita que se lean como contenido. -->
+                            <span class='password-toggle__icon' aria-hidden='true'><span></span></span>
+                        </button>
+                    </div>
                     <p></p> <!-- Separador -->
                     <div class="button-group">
                         <button type='submit' class="defaultbutton"><a href='#'></a>Iniciar Sesión</button> <!-- Botón para iniciar sesión -->
@@ -37,5 +47,7 @@
             </section> <!-- Cierre del section menuform -->
         </section> <!-- Cierre del section ladoDcho -->
     </section> <!-- Cierre del section loginMenu -->
+    <!-- Carga el archivo JavaScript cuando los elementos del formulario ya existen en la página. -->
+    <script src='login.js'></script>
 </body> <!-- Cierre del body -->
 </html>

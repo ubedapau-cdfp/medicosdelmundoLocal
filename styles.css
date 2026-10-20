@@ -177,6 +177,97 @@ input[type=text], input[type=password]{
     font-size:17px; /* TAMAÑO DEL TEXTO */
 }
 
+  /* El contenedor sirve de referencia para colocar el botón dentro del campo. */
+  .login-body .password-field{
+    /* Permite posicionar el botón con respecto a este contenedor. */
+    position:relative;
+    /* Hace que el campo ocupe todo el ancho disponible. */
+    width:100%;
+    /* Mantiene el espacio que antes quedaba debajo del campo. */
+    margin-bottom:15px;
+  }
+
+  /* Ajusta solo el input de contraseña que está dentro del contenedor anterior. */
+  .login-body .password-field input{
+    /* Incluye borde y relleno dentro del ancho indicado. */
+    box-sizing:border-box;
+    width:100%;
+    /* Reserva espacio a la derecha para que el texto no quede debajo del ojo. */
+    padding-right:48px;
+    /* El espacio inferior lo controla el contenedor, no el input. */
+    margin-bottom:0;
+  }
+
+  /* Da estilo y posición al botón que contiene el dibujo del ojo. */
+  .login-body .password-toggle{
+    /* Coloca el botón dentro del contenedor de contraseña. */
+    position:absolute;
+    /* Lo centra verticalmente y lo acerca al borde derecho. */
+    top:50%;
+    right:8px;
+    /* Centra el icono dentro de un área de clic cómoda. */
+    display:grid;
+    width:34px;
+    height:34px;
+    padding:0;
+    place-items:center;
+    /* Corrige el desplazamiento para que quede centrado verticalmente. */
+    transform:translateY(-50%);
+    /* Quita el aspecto predeterminado del botón. */
+    border:0;
+    border-radius:6px;
+    background:transparent;
+    /* Usa el azul definido al inicio del archivo. */
+    color:var(--blue);
+    /* Indica visualmente que se puede pulsar. */
+    cursor:pointer;
+  }
+
+
+
+  /* Muestra un contorno visible cuando se llega al botón usando el teclado. */
+  .login-body .password-toggle:focus-visible{
+    outline:2px solid var(--hover-bg);
+    outline-offset:2px;
+  }
+
+  /* Dibuja el borde ovalado exterior del ojo. */
+  .password-toggle__icon{
+    /* Sirve de referencia para centrar la pupila y dibujar la barra. */
+    position:relative;
+    display:grid;
+    width:18px;
+    height:12px;
+    place-items:center;
+    border:2px solid currentColor;
+    border-radius:50%;
+  }
+
+  /* Dibuja la pupila del ojo como un pequeño círculo. */
+  .password-toggle__icon span{
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background-color:currentColor;
+  }
+
+  /* Dibuja una barra diagonal sobre el ojo para indicar que la contraseña está oculta. */
+  .password-toggle__icon::after{
+    position:absolute;
+    top:3px;
+    left:-4px;
+    width:22px;
+    height:2px;
+    transform:rotate(-35deg);
+    background-color:currentColor;
+    content:'';
+  }
+
+  /* Al quitar 'is-hidden', la contraseña está visible y se oculta la barra diagonal. */
+  .password-toggle:not(.is-hidden) .password-toggle__icon::after{
+    display:none;
+  }
+
 .defaultbutton{
     font-family: 'Manrope', 'Segoe UI', sans-serif; /* ORDEN DE FUENTES A USAR */
     height:40px; /* ALTURA */
