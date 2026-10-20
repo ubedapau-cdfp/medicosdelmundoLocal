@@ -36,6 +36,140 @@ body {
   margin-left: 30px;
 }
 
+.translator {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+  margin: 4px 16px 12px;
+  padding: 10px;
+  border: 1px solid #b8c1c4;
+  border-radius: 10px;
+  background: var(--navy);
+}
+
+.translator-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex: 0 0 auto;
+  margin: 0;
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.translator-label::before {
+  content: "文A";
+  display: inline-grid;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border-radius: 7px;
+  background: var(--blue);
+  color: var(--white);
+  font-size: 10px;
+  letter-spacing: 0;
+}
+
+.translator-select {
+  box-sizing: border-box;
+  flex: 1 1 90px;
+  width: 1%;
+  min-width: 0;
+  min-height: 34px;
+  padding: 6px 28px 6px 8px;
+  appearance: none;
+  border: 1px solid var(--blue);
+  border-radius: 7px;
+  background-color: var(--white);
+  background-image: linear-gradient(45deg, transparent 50%, var(--blue) 50%), linear-gradient(135deg, var(--blue) 50%, transparent 50%);
+  background-position: calc(100% - 15px) 15px, calc(100% - 10px) 15px;
+  background-repeat: no-repeat;
+  background-size: 5px 5px, 5px 5px;
+  color: var(--navy);
+  font: 700 12px "Manrope", sans-serif;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.translator-select:hover:not(:disabled) {
+  border-color: var(--hover-bg);
+  background-color: var(--blue-hover-bg);
+  color: var(--blue-hover-text);
+}
+
+.translator-select:focus-visible {
+  outline: 3px solid var(--hover-bg);
+  outline-offset: 2px;
+}
+
+.translator-select:disabled {
+  background-color: #e9ecef;
+  color: #3b3b3b;
+  cursor: wait;
+  opacity: 0.85;
+}
+
+.translator-select option {
+  background: var(--white);
+  color: var(--navy);
+}
+
+.translator-status {
+  flex: 1 0 100%;
+  margin: 0;
+  color: var(--white);
+  font-size: 10px;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.translator-status:empty {
+  display: none;
+}
+
+.translator-floating {
+  position: fixed;
+  z-index: 10;
+  top: 16px;
+  right: 16px;
+  width: min(220px, calc(100vw - 32px));
+  margin: 0;
+  border-color: #b8c1c4;
+  background: var(--navy);
+}
+
+.translator-engine {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  .translator-floating {
+    top: 10px;
+    right: 10px;
+    width: min(200px, calc(100vw - 20px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .translator-select {
+    transition: none;
+  }
+}
+
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
 .menu, .submenu {
   list-style: none;
   margin: 0;
