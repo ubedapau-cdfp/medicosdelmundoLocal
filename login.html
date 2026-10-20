@@ -32,7 +32,7 @@
                         <input type='password' name='contrasena' size='70' id='contrasena' placeholder=' •••••••' required> <!-- Campo de texto del apartado 'Contrasena' obligatorio -->
                         <!-- type='button' evita que este botón envíe el formulario. Su id lo conecta con JavaScript. -->
                         <!-- aria-label ayuda a los lectores de pantalla y title muestra una descripción al dejar el cursor encima. -->
-                        <button type='button' class='password-toggle is-hidden' id='mostrarContrasena' aria-label='Mostrar contraseña' title='Mostrar contraseña' onclick='cambiarContrasena()'>
+                        <button type='button' class='password-toggle is-hidden' id='mostrarContrasena' aria-label='Mostrar contraseña' aria-pressed='false' title='Mostrar contraseña' onclick='cambiarContrasena()'>
                             <!-- Estos elementos vacíos forman el ojo con CSS; aria-hidden evita que se lean como contenido. -->
                             <span class='password-toggle__icon' aria-hidden='true'><span></span></span>
                         </button>
