@@ -26,14 +26,28 @@ body {
   overflow-x: hidden;
   padding-top: 20px;
   box-sizing: border-box;
+  white-space: nowrap;
+  transition: width 0.5s;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 16px 20px 30px;
 }
 
 .logo {
   display: block;
   max-width: 160px;
   height: auto;
-  margin: 0 auto 20px;
-  margin-left: 30px;
+}
+
+.closebtn {
+  color: var(--white);
+  font-size: 24px;
+  line-height: 1;
+  text-decoration: none;
 }
 
 .menu, .submenu, .dropdown-content {
@@ -67,12 +81,26 @@ body {
 }
 
 .dropdown-content {
-  display: none;
+  display: block;
+  max-height: 0;
+  overflow: hidden;
   padding-left: 16px;
+  opacity: 0;
+  visibility: hidden;
+  transition: linear 0.2s;
 }
 
 .dropdown-content.show {
-  display: block;
+  max-height: 400px;
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dropdown-content {
+    transition: none;
+  }
 }
 
 .dropbtn i {
@@ -105,8 +133,59 @@ body {
 /* -- Estilos -- */
 .main {
   margin-left: 260px;
+  transition: margin-left 0.5s;
+  padding:16px;
   font-size: 28px;
   padding: 0px 10px;
+}
+
+.home-page {
+  margin-left: 260px;
+  text-align: center;
+  transition: margin-left 0.5s;
+}
+
+.home-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.home-header .logo {
+  width: 50px;
+  height: 50px;
+}
+
+.open-nav-button {
+  display: none;
+  padding: 30px;
+  border: 0;
+  background: none;
+  color: var(--navy);
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.sidenav.is-closed ~ .main .open-nav-button {
+  display: block;
+}
+
+.home-page .imagenes figure {
+  flex: 1 1 300px;
+  max-width: 600px;
+  min-width: 0;
+  margin: 0;
+}
+
+.home-page .imagenes {
+  flex-wrap: wrap;
+}
+
+.home-page .imagenes img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* -- Estilos para el botón de inicio de sesión -- */

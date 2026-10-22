@@ -12,8 +12,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-<nav class="sidenav" aria-label="Main navigation">
-    <a href="index.html"><img src="Imagenes/logo.png" alt="Logo" class="logo" width="50" height="50"></a>
+<nav class="sidenav" id="sidenav" aria-label="Main navigation">
+    <div class="sidebar-header">
+        <a href="index.html"><img src="Imagenes/logo.png" alt="Logo" class="logo" width="50" height="50"></a>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fa-solid fa-xmark"></i></a>
+    </div>
     <ul class="menu">
         <li>
             <button class="dropbtn" type="button" aria-expanded="false" aria-controls="derechos-iniciales">Derechos Iniciales<i class="fa-solid fa-caret-down"></i></button>
@@ -54,15 +57,18 @@
     </ul>
     <a class="loginbtn" href="login.html">Iniciar Sesión</a>
 </nav>
-<main class="main">
+<main class="main home-page" id="main">
+  <div class="home-header">
+    <button class="open-nav-button" type="button" aria-label="Open navigation" onclick="openNav()"><i class="fa-solid fa-bars"></i></button>
+  </div>
   <h1>Bienvenidas a Médicos del Mundo</h1>
   <p class="lead">Luchamos por los derechos de las mujeres en situaciones de pobreza, maltrato, o explotación. Porque ninguna vida vale menos que la de otra persona.</p>
   <section class="imagenes">
     <figure><img src="Imagenes/imageninicio1.jpg" alt="Imagen 1" height="400" width="600"><figcaption>Imagen 1</figcaption></figure>
     <figure><img src="Imagenes/imageninicio2.jpg" alt="Imagen 2" height="400" width="600"><figcaption>Imagen 2</figcaption></figure>
-    
   </section>
 </main>
 <script src="dropdownSubapartados.js"></script>
+<script src="openSidebar.js"></script>
 </body>
 </html>
