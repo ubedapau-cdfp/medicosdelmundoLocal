@@ -12,8 +12,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-<nav class="sidenav" aria-label="Main navigation">
-    <a href="index.html"><img src="Imagenes/logo.png" alt="Logo" class="logo" width="50" height="50"></a>
+<nav class="sidenav" id="sidenav" aria-label="Main navigation">
+    <div class="sidebar-header">
+        <a href="index.html"><img src="Imagenes/logo.png" alt="Logo" class="logo" width="50" height="50"></a>
+        <button class="closebtn" type="button" aria-label="Cerrar menú" aria-controls="sidenav" aria-expanded="true" onclick="closeNav()"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+    </div>
     <ul class="menu">
         <li>
             <div class="menu-heading">
@@ -66,7 +69,10 @@
     </ul>
     <a class="loginbtn" href="login.html">Iniciar Sesión</a>
 </nav>
-<main class="main">
+<main class="main home-page" id="main">
+  <div class="home-header">
+    <button class="open-nav-button" type="button" aria-label="Abrir menú" aria-controls="sidenav" aria-expanded="false" onclick="openNav()"><i class="fa-solid fa-angles-down" aria-hidden="true"></i></button>
+  </div>
   <h1>Bienvenidas a Médicos del Mundo</h1>
   <p class="lead">Luchamos por los derechos de las mujeres en situaciones de pobreza, maltrato, o explotación. Porque ninguna vida vale menos que la de otra persona.</p>
   <section class="imagenes">
@@ -76,5 +82,6 @@
   </section>
 </main>
 <script src="dropdownSubapartados.js"></script>
+<script src="openSidebar.js"></script>
 </body>
 </html>

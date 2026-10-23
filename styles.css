@@ -16,7 +16,7 @@ body {
 }
 
 .sidenav {
-  height: 100%;
+  height: 100vh;
   width: 260px;
   position: fixed;
   z-index: 1;
@@ -26,6 +26,19 @@ body {
   overflow-x: hidden;
   padding-top: 20px;
   box-sizing: border-box;
+  white-space: nowrap;
+  transition: height 0.5s;
+}
+
+.sidenav.is-closed {
+  padding-top: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 16px 20px 30px;
 }
 
 .logo {
@@ -34,6 +47,20 @@ body {
   height: auto;
   margin: 0 auto 20px;
   margin-left: 30px;
+}
+
+.sidebar-header .logo {
+  margin: 0;
+}
+
+.closebtn {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--white);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
 }
 
 .menu, .submenu, .dropdown-content {
@@ -78,12 +105,25 @@ body {
 }
 
 .dropdown-content {
-  display: none;
+  max-height: 0;
+  overflow: hidden;
   padding-left: 16px;
+  opacity: 0;
+  visibility: hidden;
+  transition: linear 0.2s;
 }
 
 .dropdown-content.show {
-  display: block;
+  max-height: 400px;
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dropdown-content {
+    transition: none;
+  }
 }
 
 /* --  -- */
@@ -112,8 +152,53 @@ body {
 /* -- Estilos -- */
 .main {
   margin-left: 260px;
+  transition: margin-left 0.5s;
   font-size: 28px;
   padding: 0px 10px;
+}
+
+.home-page {
+  margin-left: 260px;
+  text-align: center;
+  transition: margin-left 0.5s;
+}
+
+.home-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.open-nav-button {
+  display: none;
+  padding: 30px;
+  border: 0;
+  background: none;
+  color: var(--navy);
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.sidenav.is-closed ~ .main .open-nav-button {
+  display: block;
+}
+
+.home-page .imagenes figure {
+  flex: 1 1 300px;
+  max-width: 600px;
+  min-width: 0;
+  margin: 0;
+}
+
+.home-page .imagenes {
+  flex-wrap: wrap;
+}
+
+.home-page .imagenes img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* -- Estilos para el botón de inicio de sesión -- */
