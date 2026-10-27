@@ -1,22 +1,34 @@
-function openNav() { // Función para abrir el sidenav
-  const sidenav = document.getElementById("sidenav"); // Obtiene el elemento con id "sidenav"
-  sidenav.style.height = "100vh"; // Estilo del sidenav de la altura a 100vh (viewport height)
-  sidenav.classList.remove("is-closed"); // Elimina la clase is-closed del sidenav (indica que está abierto)
-  document.getElementById("main").style.marginLeft = "260px"; // Estilo del main con margen a la izquierda a 260px (el contenido es empujado a la derecha 260 píxeles)
+// Abre el menú lateral (sidenav)
+function openNav() {
+  // Obtiene el menú lateral por su id "sidenav"
+  const sidenav = document.getElementById("sidenav");
 
-  // Indica a los lectores de pantalla que el menú lateral está abierto (true)
-  sidenav.querySelector(".closebtn").setAttribute("aria-expanded", "true"); // El botón de cerrar está abierto/aparece (true)
-  document.querySelector(".open-nav-button").setAttribute("aria-expanded", "true"); // El menú lateral está abierto (true)
+  // Fija la anchura en 260px. Al ser un estilo en línea, tiene prioridad sobre
+  // el CSS, y la transición "width 0.5s" de .sidenav hace que se anime
+  sidenav.style.width = "260px";
+
+  // Quita la clase "is-closed": así el botón de abrir (.open-nav-button)
+  // deja de mostrarse, porque el CSS solo lo muestra si existe esa clase
+  sidenav.classList.remove("is-closed");
+
+  // Margen izquierdo de 260px en main para que el contenido no quede
+  // tapado por el menú (se anima con "margin-left 0.5s" del CSS)
+  document.getElementById("main").style.marginLeft = "260px";
 }
 
-function closeNav() { // Función para cerrar el sidenav
-  const sidenav = document.getElementById("sidenav"); // Obtiene el elemento con id "sidenav"
-  sidenav.style.height = "0"; // Estilo del sidenav de la altura a 0
-  sidenav.classList.add("is-closed"); // Agrega la clase is-closed al sidenav (indica que está cerrado)
-  document.getElementById("main").style.marginLeft = "0"; // Estilo del main con margen a la izquierda a 0
+// Cierra el menú lateral (sidenav)
+function closeNav() {
+  // Obtiene el menú lateral por su id "sidenav"
+  const sidenav = document.getElementById("sidenav");
 
-  // Indica a los lectores de pantalla que el menú lateral está cerrado (false)
-  sidenav.querySelector(".closebtn").setAttribute("aria-expanded", "false"); // El botón de cerrar está cerrado/no aparece (false)
-  document.querySelector(".open-nav-button").setAttribute("aria-expanded", "false"); // El menú lateral está cerrado (false) 
+  // Anchura 0: el menú se encoge hasta desaparecer. El contenido queda
+  // oculto por el "overflow-x: hidden" del CSS
+  sidenav.style.width = "0";
+
+  // Añade "is-closed": el CSS usa esta clase para mostrar el botón de abrir
+  // el menú dentro de main
+  sidenav.classList.add("is-closed");
+
+  // Quita el margen de main para que el contenido ocupe todo el ancho
+  document.getElementById("main").style.marginLeft = "0";
 }
-
