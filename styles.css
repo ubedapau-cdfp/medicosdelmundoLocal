@@ -244,8 +244,7 @@ input[type=text], input[type=password]{
     height:4px;
     border-radius:50%;
     background-color:currentColor;
-    transform:rotate(0deg);
-    transition:transform 0.25s ease;
+    transform:rotate(0) scale(1);
   }
 
   .password-toggle__icon::after{
@@ -258,7 +257,6 @@ input[type=text], input[type=password]{
     border-radius:2px;
     background-color:currentColor;
     content:'';
-    transition:transform 0.25s ease, opacity 0.2s ease;
   }
 
   .password-toggle:not(.is-hidden) .password-toggle__icon{
@@ -275,27 +273,8 @@ input[type=text], input[type=password]{
     transform:rotate(0) scale(1.15);
   }
 
-  .password-toggle.is-spinning:not(.is-hidden) .password-toggle__icon{
-    animation:eye-turn-visible 0.65s ease-in-out;
-  }
 
-  .password-toggle.is-spinning.is-hidden .password-toggle__icon{
-    animation:eye-turn-hidden 0.65s ease-in-out;
-  }
 
-.password-toggle.is-spinning .password-toggle__icon span{
-    animation:eye-turn-visible 0.65s ease-in-out;
-  }
-
-  @keyframes eye-turn-visible{
-    from{ transform:rotate(0deg); }
-    to{ transform:rotate(360deg); }
-  }
-
-  @keyframes eye-turn-hidden{
-    from{ transform:rotate(0deg); }
-    to{ transform:rotate(360deg); }
-  }
 
   @media (prefers-reduced-motion: reduce){
     .login-body .password-toggle,
