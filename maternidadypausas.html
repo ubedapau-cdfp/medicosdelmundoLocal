@@ -9,45 +9,58 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="Imagenes/logo.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-<nav class="sidenav" aria-label="Main navigation">
-    <a href="index.html"><img src="Imagenes/logo.png" alt="Logo" class="logo" width="50" height="50"></a>
+<nav class="sidenav" id="sidenav" aria-label="Main navigation">
+    <div class="sidebar-header">
+        <a href="index.html"><img src="Imagenes/logo.png" alt="Logo" class="logo" width="50" height="50"></a>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fa-solid fa-xmark"></i></a>
+    </div>
     <ul class="menu">
-        <li><a href="derechosiniciales.html">Derechos Iniciales</a>
-            <ul class="submenu">
+        <li>
+            <button class="dropbtn" type="button" aria-expanded="false" aria-controls="derechos-iniciales">Derechos Iniciales<i class="fa-solid fa-caret-down"></i></button>
+            <ul class="dropdown-content" id="derechos-iniciales">
                 <li><a href="sertrabajadora.html">Ser Trabajadora</a></li>
                 <li><a href="edadynacionalidad.html">Edad y Nacionalidad</a></li>
                 <li><a href="tiposdecontrato.html">Tipos de Contrato</a></li>
             </ul>
         </li>
-        <li><a href="proteccionycambios.html">Protección y Cambios</a>
-            <ul class="submenu">
+        <li>
+            <button class="dropbtn" type="button" aria-expanded="false" aria-controls="proteccion-cambios">Protección y Cambios<i class="fa-solid fa-caret-down"></i></button>
+            <ul class="dropdown-content" id="proteccion-cambios">
                 <li><a href="cambiosdecondiciones.html">Cambios de Condiciones</a></li>
                 <li><a href="maternidadypausas.html">Maternidad y Pausas</a></li>
                 <li><a href="despidoycierre.html">Despido y Cierre</a></li>
                 <li><a href="finiquitoyliquidacion.html">Finiquito y Liquidación</a></li>
             </ul>
         </li>
-        <li><a href="mitiempolaboral.html">Mi Tiempo Laboral</a></li>
-        <ul class="submenu">
+        <li>
+            <button class="dropbtn" type="button" aria-expanded="false" aria-controls="tiempo-laboral">Mi Tiempo Laboral<i class="fa-solid fa-caret-down"></i></button>
+            <ul class="dropdown-content" id="tiempo-laboral">
                 <li><a href="jornadayhorarios.html">Jornada y Horarios</a></li>
                 <li><a href="descansosyvacaciones.html">Descansos y Vacaciones</a></li>
                 <li><a href="horasyturnos.html">Horas y Turnos</a></li>
                 <li><a href="permisosyconciliacion.html">Permisos y Conciliación</a></li>
             </ul>
-        <li><a href="salarioynomina.html">Salario y Nómina</a></li>
-        <ul class="submenu">
+        </li>
+        <li>
+            <button class="dropbtn" type="button" aria-expanded="false" aria-controls="salario-nomina">Salario y Nómina<i class="fa-solid fa-caret-down"></i></button>
+            <ul class="dropdown-content" id="salario-nomina">
                 <li><a href="conceptosycuantia.html">Conceptos y Cuantía</a></li>
                 <li><a href="estructuradelanomina.html">Estructura de la Nómina</a></li>
                 <li><a href="garantiasyproteccion.html">Garantías y Protección</a></li>
             </ul>
+        </li>
         <li><a href="sobrenosotras.html">Sobre Nosotras</a></li>
         <li><a href="faqs.html">FAQs</a></li>
     </ul>
     <a class="loginbtn" href="login.html">Iniciar Sesión</a>
 </nav>
-<main class="main subapartados">
+<main class="main subapartados" id="main">
+  <div class="home-header">
+    <button class="open-nav-button" type="button" aria-label="Open navigation" onclick="openNav()"><i class="fa-solid fa-bars"></i></button>
+  </div>
   <h1>Maternidad y Pausas</h1>
   <p class="lead intro">Los requisitos y condiciones para que exista un contrato laboral.</p>
 
@@ -73,5 +86,7 @@
     </div>
   </section>
 </main>
+<script src="dropdownSubapartados.js"></script>
+<script src="openSidebar.js"></script>
 </body>
 </html>
