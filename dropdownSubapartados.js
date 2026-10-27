@@ -19,20 +19,6 @@ function getSubmenu(button) {
     return submenu;
 }
 
-// Función que cierra todos los menús desplegables.
-function closeDropdowns() {
-    // Recorremos cada botón de la lista...
-    dropdownButtons.forEach((button) => {
-        // ...obtenemos su submenú y le quitamos la clase "show"
-        // (el CSS usa esa clase para mostrarlo; sin ella, queda oculto).
-        getSubmenu(button).classList.remove("show");
-
-        // Actualizamos el atributo de accesibilidad: "false" indica
-        // a los lectores de pantalla que el menú está cerrado.
-        button.setAttribute("aria-expanded", "false");
-    });
-}
-
 // Recorremos cada botón para asignarle su comportamiento al hacer clic.
 dropdownButtons.forEach((button) => {
     // addEventListener "escucha" el evento click sobre este botón.
