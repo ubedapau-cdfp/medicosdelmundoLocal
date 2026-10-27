@@ -1,3 +1,5 @@
+// -------------------------- MENÚ LATERAL - P. ÚBEDA  --------------------------------
+
 // Abre el menú lateral (sidenav)
 function openNav() {
   // Obtiene el menú lateral por su id "sidenav"

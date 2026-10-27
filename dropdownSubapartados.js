@@ -1,3 +1,5 @@
+// -------------------------- DROPDOWN DE SUBAPARTADOS - P. ÚBEDA  --------------------------------
+
 // Selecciona TODOS los elementos del HTML que tengan la clase "dropbtn"
 // querySelectorAll devuelve una lista con todos ellos.
 const dropdownButtons = document.querySelectorAll(".dropbtn");

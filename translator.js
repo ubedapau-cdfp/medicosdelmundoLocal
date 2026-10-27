@@ -1,3 +1,7 @@
+// -------------------------- TRADUCTOR DE GOOGLE - D. RIVAS  --------------------------------
+
+// Función que se ejecuta al instante (IIFE) para que sus variables
+// no se mezclen con las de otros scripts
 (function () {
   // id del contenedor oculto donde Google Translate crea su selector
   const widgetId = "google_translate_engine";
@@ -9,20 +13,40 @@
   // Si esta página no tiene el selector, no hace nada
   if (!select) return;
 
+  // Vuelve al español borrando la cookie "googtrans", donde Google guarda
+  // el idioma elegido (con formato "/es/en"), y recargando la página.
+  // Google no tiene una opción para deshacer la traducción, porque
+  // modifica el texto de la página directamente; recargar es la forma
+  // más fiable de recuperar el original.
   function restoreOriginalLanguage() {
+    // Dominio de la página, por ejemplo "midominio.org"
     const hostname = window.location.hostname;
+
+    // Trozos de la ruta sin vacíos: "/web/derechos.html" -> ["web", "derechos.html"]
     const pathSegments = window.location.pathname.split("/").filter(Boolean);
+
+    // Lista de rutas en las que puede estar guardada la cookie. Empieza por "/"
     const paths = ["/"];
 
+    // Va añadiendo rutas cada vez más cortas:
+    // "/web/derechos.html/", "/web/"
     while (pathSegments.length) {
       paths.push("/" + pathSegments.join("/") + "/");
-      pathSegments.pop();
+      pathSegments.pop(); // quita el último trozo para la siguiente vuelta
     }
 
+    // Variantes de dominio: sin atributo domain, "midominio.org" y ".midominio.org"
     const domains = ["", hostname, "." + hostname];
+
+    // Para borrar una cookie, la ruta y el dominio tienen que coincidir con
+    // los usados al crearla. Como no sabemos cuáles usó Google, se prueban
+    // todas las combinaciones
     for (const path of paths) {
       for (const domain of domains) {
+        // Si domain está vacío, no se añade el atributo
         const domainAttribute = domain ? "; domain=" + domain : "";
+
+        // Una cookie con fecha de caducidad en el pasado (1970) se elimina
         document.cookie =
           "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=" +
           path +
@@ -30,7 +54,10 @@
       }
     }
 
+    // Marca el documento como español
     document.documentElement.lang = "es";
+
+    // Recarga la página: sin cookie, Google ya no traduce y se ve el original
     window.location.reload();
   }
 
@@ -43,7 +70,7 @@
         includedLanguages: "en,fr,ar,pt,ro,uk,zh-CN",  // debe coincidir con los <option> (menos "es")
         autoDisplay: false                             // no mostrar la barra de Google
       },
-      widgetId
+      widgetId // id del contenedor donde Google crea su selector
     );
   };
 
@@ -51,6 +78,7 @@
   select.addEventListener("change", () => {
     const lang = select.value; // por ejemplo "fr"
 
+    // Si se elige español, se restaura el original y se termina aquí
     if (lang === "es") {
       restoreOriginalLanguage();
       return;
@@ -63,7 +91,7 @@
     // Copia la elección en el selector de Google
     googleSelect.value = lang;
 
-    // Dispara "change" para que Google traduzca la página
+    // Dispara "change" para que Google crea que se ha elegido ahí y traduzca
     googleSelect.dispatchEvent(new Event("change", { bubbles: true }));
 
     // Mantiene el atributo lang de <html> acorde al idioma

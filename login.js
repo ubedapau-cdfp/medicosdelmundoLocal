@@ -1,3 +1,5 @@
+// -------------------------- VISTA DE CONTRASEÑA - G. AROS  --------------------------------
+
 // "function" crea una función, es decir, un bloque de instrucciones que podremos ejecutar cuando haga falta.
 // El nombre cambiarContrasena se usa desde el botón de login.html para llamar a esta función.
 function cambiarContrasena() {
@@ -45,19 +47,40 @@ if (contrasena.type === 'password') {
     }
 }
 
+// -------------------------- AVISO DE CONTRASEÑA - G. AROS  --------------------------------
+
 // Muestra el aviso de contraseña incorrecta sin depender de un servidor.
 function mostrarErrorLogin() {
+    // Obtiene el elemento del aviso de error (el mensaje que se enseña al usuario)
     var alerta = document.getElementById('loginAlert');
+
+    // Obtiene el campo de la contraseña
     var contrasena = document.getElementById('contrasena');
 
+    // hidden = false quita el atributo "hidden" del HTML,
+    // así que el aviso pasa de estar oculto a verse
     alerta.hidden = false;
+
+    // Accesibilidad: aria-invalid="true" avisa a los lectores de pantalla
+    // de que el valor de este campo no es válido
     contrasena.setAttribute('aria-invalid', 'true');
+
+    // Pone el cursor dentro del campo de contraseña para que la persona
+    // pueda corregirla directamente
     contrasena.focus();
 }
 
+// Busca el formulario por su id y escucha el evento "submit"
+// (se dispara al pulsar el botón de enviar o al dar Enter en un campo)
 document.getElementById('loginForm').addEventListener('submit', function (evento) {
+    // Cancela el comportamiento por defecto del formulario
+    // (enviar los datos y recargar la página)
     evento.preventDefault();
+
+    // En su lugar, muestra siempre el error
     mostrarErrorLogin();
 });
 
+// Muestra el error de forma forzada al clicar el botón
+// (un botón aparte, con id "forzarError", que llama a la misma función)
 document.getElementById('forzarError').addEventListener('click', mostrarErrorLogin);
