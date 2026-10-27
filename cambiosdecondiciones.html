@@ -17,6 +17,20 @@
         <a href="index.html"><img src="Imagenes/logo.png" alt="Logo" class="logo" width="50" height="50"></a>
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fa-solid fa-xmark"></i></a>
     </div>
+    <aside class="translator" aria-label="Idioma de la página">
+        <label class="translator-label" for="translator-language">Idioma</label>
+        <select class="translator-select" id="translator-language">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+            <option value="ar">العربية</option>
+            <option value="pt">Português</option>
+            <option value="ro">Română</option>
+            <option value="uk">Українська</option>
+            <option value="zh-CN">中文</option>
+        </select>
+        <span class="translator-status" role="status" aria-live="polite"></span>
+    </aside>
     <ul class="menu">
         <li>
             <button class="dropbtn" type="button" aria-expanded="false" aria-controls="derechos-iniciales">Derechos Iniciales<i class="fa-solid fa-caret-down"></i></button>
@@ -87,6 +101,8 @@
   </section>
   <script src="dropdownSubapartados.js"></script>
   <script src="openSidebar.js"></script>
+  <div id="google_translate_engine" class="translator-engine" aria-hidden="true"></div>
+  <script src="translator.js" defer></script>
 </main>
 </body>
 </html>

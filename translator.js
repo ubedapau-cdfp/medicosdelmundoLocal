@@ -9,6 +9,31 @@
   // Si esta página no tiene el selector, no hace nada
   if (!select) return;
 
+  function restoreOriginalLanguage() {
+    const hostname = window.location.hostname;
+    const pathSegments = window.location.pathname.split("/").filter(Boolean);
+    const paths = ["/"];
+
+    while (pathSegments.length) {
+      paths.push("/" + pathSegments.join("/") + "/");
+      pathSegments.pop();
+    }
+
+    const domains = ["", hostname, "." + hostname];
+    for (const path of paths) {
+      for (const domain of domains) {
+        const domainAttribute = domain ? "; domain=" + domain : "";
+        document.cookie =
+          "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=" +
+          path +
+          domainAttribute;
+      }
+    }
+
+    document.documentElement.lang = "es";
+    window.location.reload();
+  }
+
   // Google llama a esta función cuando su script termina de cargar
   // (coincide con "?cb=googleTranslateElementInit" de la URL)
   window.googleTranslateElementInit = function () {
@@ -26,12 +51,17 @@
   select.addEventListener("change", () => {
     const lang = select.value; // por ejemplo "fr"
 
+    if (lang === "es") {
+      restoreOriginalLanguage();
+      return;
+    }
+
     // Busca el <select> que Google ha creado dentro del contenedor oculto
     const googleSelect = document.querySelector("#" + widgetId + " select");
     if (!googleSelect) return; // Google aún no ha cargado
 
-    // Copia la elección en el selector de Google ("" = idioma original)
-    googleSelect.value = lang === "es" ? "" : lang;
+    // Copia la elección en el selector de Google
+    googleSelect.value = lang;
 
     // Dispara "change" para que Google traduzca la página
     googleSelect.dispatchEvent(new Event("change", { bubbles: true }));
