@@ -54,19 +54,6 @@ if (contrasena.type === 'password') {
     }, { once: true });
 }
 
-// Muestra el aviso de contraseña incorrecta sin depender de un servidor.
-function mostrarErrorLogin() {
-    var alerta = document.getElementById('loginAlert');
-    var contrasena = document.getElementById('contrasena');
-
-    alerta.hidden = false;
-    contrasena.setAttribute('aria-invalid', 'true');
-    contrasena.focus();
-}
-
-document.getElementById('loginForm').addEventListener('submit', function (evento) {
-    evento.preventDefault();
-    mostrarErrorLogin();
+document.getElementById('forzarError').addEventListener('click', function () {
+    window.alert('La contraseña es incorrecta. Inténtalo de nuevo.');
 });
-
-document.getElementById('forzarError').addEventListener('click', mostrarErrorLogin);
