@@ -11,7 +11,7 @@ function getSubmenu(button) { // Función para obtener los subapartados
 function closeDropdowns() { // Función para cerrar todos los subapartados
     dropdownButtons.forEach((button) => { // Recorre todos los botones del array dropdownButtons
         getSubmenu(button).classList.remove("show"); // Elimina la clase "show" del subapartado correspondiente al botón
-        button.setAttribute("aria-expanded", "false"); // El atributo "aria-expanded" pasa a "false"
+        button.setAttribute("aria-expanded", "false"); // El atributo "aria-expanded" pasa a "false" (Dropdown cerrado)
     });
 }
 
@@ -23,8 +23,4 @@ dropdownButtons.forEach((button) => { // Recorre todos los botones del array dro
     });
 });
 
-document.addEventListener("click", (event) => { // Añade un evento de click al documento
-    if (!event.target.closest(".dropbtn, .dropdown-content")) { // Si el click no es en un botón o en un subapartado, cierra todos los subapartados
-        closeDropdowns(); // Cierra todos los subapartados
-    }
-});
+
