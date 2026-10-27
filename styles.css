@@ -297,7 +297,144 @@ input[type=text], input[type=password]{
     font-size:17px; /* TAMAÑO DEL TEXTO */
 }
 
+  /* El contenedor sirve de referencia para colocar el botón dentro del campo. */
+  .login-body .password-field{
+    /* Permite posicionar el botón con respecto a este contenedor. */
+    position:relative;
+    /* Hace que el campo ocupe todo el ancho disponible. */
+    width:100%;
+    /* Mantiene el espacio que antes quedaba debajo del campo. */
+    margin-bottom:15px;
+  }
+
+  /* Ajusta solo el input de contraseña que está dentro del contenedor anterior. */
+  .login-body .password-field input{
+    /* Incluye borde y relleno dentro del ancho indicado. */
+    box-sizing:border-box;
+    width:100%;
+    /* Reserva espacio a la derecha para que el texto no quede debajo del ojo. */
+    padding-right:48px;
+    /* El espacio inferior lo controla el contenedor, no el input. */
+    margin-bottom:0;
+  }
+
+  .login-body .password-toggle{
+    position:absolute;
+    top:50%;
+    right:1px;
+    display:grid;
+    width:28px;
+    height:28px;
+    padding:0;
+    place-items:center;
+    transform:translateY(-50%);
+    border:0;
+    border-radius:0;
+    background:transparent;
+    box-shadow:none;
+    color:var(--blue);
+    cursor:pointer;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .login-body .password-toggle:active{
+    transform:translateY(-50%) scale(0.94);
+  }
+
+  .login-body .password-toggle:focus-visible{
+    outline:3px solid #ffffff;
+    outline-offset:3px;
+    box-shadow:0 0 0 6px rgba(184, 222, 255, 0.8);
+  }
+
+  .password-toggle__icon{
+    position:relative;
+    display:grid;
+    width:17px;
+    height:11px;
+    place-items:center;
+    border:2px solid currentColor;
+    border-radius:50%;
+    transform:rotate(0deg);
+    transition:transform 0.25s ease, border-radius 0.25s ease;
+  }
+
+  .password-toggle__icon span{
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background-color:currentColor;
+    transform:rotate(0deg);
+    transition:transform 0.25s ease;
+  }
+
+  .password-toggle__icon::after{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:24px;
+    height:2px;
+    transform:translate(-50%, -50%) rotate(45deg);
+    border-radius:2px;
+    background-color:currentColor;
+    content:'';
+    transition:transform 0.25s ease, opacity 0.2s ease;
+  }
+
+  .password-toggle:not(.is-hidden) .password-toggle__icon{
+    transform:rotate(0);
+    border-radius:50%;
+  }
+
+  .password-toggle:not(.is-hidden) .password-toggle__icon::after{
+    opacity:0;
+    transform:translate(-50%, -50%) rotate(45deg) scaleX(0);
+  }
+
+  .password-toggle:not(.is-hidden) .password-toggle__icon span{
+    transform:rotate(0) scale(1.15);
+  }
+
+  .password-toggle.is-spinning:not(.is-hidden) .password-toggle__icon{
+    animation:eye-turn-visible 0.65s ease-in-out;
+  }
+
+  .password-toggle.is-spinning.is-hidden .password-toggle__icon{
+    animation:eye-turn-hidden 0.65s ease-in-out;
+  }
+
+.password-toggle.is-spinning .password-toggle__icon span{
+    animation:eye-turn-visible 0.65s ease-in-out;
+  }
+
+  @keyframes eye-turn-visible{
+    from{ transform:rotate(0deg); }
+    to{ transform:rotate(360deg); }
+  }
+
+  @keyframes eye-turn-hidden{
+    from{ transform:rotate(0deg); }
+    to{ transform:rotate(360deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .login-body .password-toggle,
+    .password-toggle__icon,
+    .password-toggle__icon span,
+    .password-toggle__icon::after{
+      transition:none;
+    }
+
+    .password-toggle.is-spinning .password-toggle__icon{
+      animation:none;
+    }
+  }
+
 .defaultbutton{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
     font-family: 'Manrope', 'Segoe UI', sans-serif; /* ORDEN DE FUENTES A USAR */
     height:40px; /* ALTURA */
     border-color: #e6f3ff; /* COLOR DEL BORDE */
@@ -318,11 +455,27 @@ input[type=text], input[type=password]{
     display: flex;
     justify-content: center;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .defaultbutton a{
     text-decoration: none; /* SIN SUBRAYADO */
     color:#1d4387; /* COLOR DEL TEXTO */
+}
+
+.login-alert{
+    margin: 0 auto 15px;
+    padding: 12px 16px;
+    border: 2px solid #ffb4ab;
+    border-radius: 5px;
+    background-color: #fff0ee;
+    color: #8a1c13;
+    font-weight: 700;
+    text-align: center;
+}
+
+.login-alert[hidden]{
+    display: none;
 }
 
 .defaultbutton:hover{
