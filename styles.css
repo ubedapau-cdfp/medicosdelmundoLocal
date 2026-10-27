@@ -198,60 +198,56 @@ input[type=text], input[type=password]{
     margin-bottom:0;
   }
 
-  /* Da estilo y posición al botón que contiene el dibujo del ojo. */
   .login-body .password-toggle{
-    /* Coloca el botón dentro del contenedor de contraseña. */
     position:absolute;
-    /* Lo centra verticalmente y lo acerca al borde derecho. */
     top:50%;
-    right:8px;
-    /* Centra el icono dentro de un área de clic cómoda. */
+    right:1px;
     display:grid;
-    width:34px;
-    height:34px;
+    width:28px;
+    height:28px;
     padding:0;
     place-items:center;
-    /* Corrige el desplazamiento para que quede centrado verticalmente. */
     transform:translateY(-50%);
-    /* Quita el aspecto predeterminado del botón. */
     border:0;
-    border-radius:6px;
+    border-radius:0;
     background:transparent;
-    /* Usa el azul definido al inicio del archivo. */
+    box-shadow:none;
     color:var(--blue);
-    /* Indica visualmente que se puede pulsar. */
     cursor:pointer;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
   }
 
+  .login-body .password-toggle:active{
+    transform:translateY(-50%) scale(0.94);
+  }
 
-
-  /* Muestra un contorno visible cuando se llega al botón usando el teclado. */
   .login-body .password-toggle:focus-visible{
-    outline:2px solid var(--hover-bg);
-    outline-offset:2px;
+    outline:3px solid #ffffff;
+    outline-offset:3px;
+    box-shadow:0 0 0 6px rgba(184, 222, 255, 0.8);
   }
 
-  /* Dibuja el borde ovalado exterior del ojo. */
   .password-toggle__icon{
-    /* Sirve de referencia para centrar la pupila y dibujar la barra. */
     position:relative;
     display:grid;
-    width:18px;
-    height:12px;
+    width:17px;
+    height:11px;
     place-items:center;
     border:2px solid currentColor;
     border-radius:50%;
+    transform:rotate(0deg);
+    transition:transform 0.25s ease, border-radius 0.25s ease;
   }
 
-  /* Dibuja la pupila del ojo como un pequeño círculo. */
   .password-toggle__icon span{
     width:4px;
     height:4px;
     border-radius:50%;
     background-color:currentColor;
+    transform:rotate(0deg);
+    transition:transform 0.25s ease;
   }
 
-  /* Dibuja una barra diagonal sobre el ojo para indicar que la contraseña está oculta. */
   .password-toggle__icon::after{
     position:absolute;
     top:50%;
@@ -262,14 +258,63 @@ input[type=text], input[type=password]{
     border-radius:2px;
     background-color:currentColor;
     content:'';
+    transition:transform 0.25s ease, opacity 0.2s ease;
   }
 
-  /* Al quitar 'is-hidden', la contraseña está visible y se oculta la barra diagonal. */
+  .password-toggle:not(.is-hidden) .password-toggle__icon{
+    transform:rotate(0);
+    border-radius:50%;
+  }
+
   .password-toggle:not(.is-hidden) .password-toggle__icon::after{
-    display:none;
+    opacity:0;
+    transform:translate(-50%, -50%) rotate(45deg) scaleX(0);
+  }
+
+  .password-toggle:not(.is-hidden) .password-toggle__icon span{
+    transform:rotate(0) scale(1.15);
+  }
+
+  .password-toggle.is-spinning:not(.is-hidden) .password-toggle__icon{
+    animation:eye-turn-visible 0.65s ease-in-out;
+  }
+
+  .password-toggle.is-spinning.is-hidden .password-toggle__icon{
+    animation:eye-turn-hidden 0.65s ease-in-out;
+  }
+
+.password-toggle.is-spinning .password-toggle__icon span{
+    animation:eye-turn-visible 0.65s ease-in-out;
+  }
+
+  @keyframes eye-turn-visible{
+    from{ transform:rotate(0deg); }
+    to{ transform:rotate(360deg); }
+  }
+
+  @keyframes eye-turn-hidden{
+    from{ transform:rotate(0deg); }
+    to{ transform:rotate(360deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .login-body .password-toggle,
+    .password-toggle__icon,
+    .password-toggle__icon span,
+    .password-toggle__icon::after{
+      transition:none;
+    }
+
+    .password-toggle.is-spinning .password-toggle__icon{
+      animation:none;
+    }
   }
 
 .defaultbutton{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
     font-family: 'Manrope', 'Segoe UI', sans-serif; /* ORDEN DE FUENTES A USAR */
     height:40px; /* ALTURA */
     border-color: #e6f3ff; /* COLOR DEL BORDE */
@@ -290,11 +335,27 @@ input[type=text], input[type=password]{
     display: flex;
     justify-content: center;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .defaultbutton a{
     text-decoration: none; /* SIN SUBRAYADO */
     color:#1d4387; /* COLOR DEL TEXTO */
+}
+
+.login-alert{
+    margin: 0 auto 15px;
+    padding: 12px 16px;
+    border: 2px solid #ffb4ab;
+    border-radius: 5px;
+    background-color: #fff0ee;
+    color: #8a1c13;
+    font-weight: 700;
+    text-align: center;
+}
+
+.login-alert[hidden]{
+    display: none;
 }
 
 .defaultbutton:hover{

@@ -24,6 +24,7 @@ if (contrasena.type === 'password') {
 
         // setAttribute cambia un atributo HTML; aria-label indica a lectores de pantalla qué hará el botón.
         boton.setAttribute('aria-label', 'Ocultar contraseña');
+        boton.setAttribute('aria-pressed', 'true');
 
         // title asigna el texto que aparece como ayuda cuando se deja el cursor sobre el botón.
         boton.title = 'Ocultar contraseña';
@@ -39,8 +40,33 @@ if (contrasena.type === 'password') {
 
         // Cambia el nombre accesible del botón para anunciar que al pulsarlo se mostrará la contraseña.
         boton.setAttribute('aria-label', 'Mostrar contraseña');
+        boton.setAttribute('aria-pressed', 'false');
 
         // Actualiza también el texto de ayuda que aparece al dejar el cursor sobre el botón.
         boton.title = 'Mostrar contraseña';
     }
+
+    boton.classList.remove('is-spinning');
+    void boton.offsetWidth;
+    boton.classList.add('is-spinning');
+    boton.addEventListener('animationend', function detenerAnimacion() {
+        boton.classList.remove('is-spinning');
+    }, { once: true });
 }
+
+// Muestra el aviso de contraseña incorrecta sin depender de un servidor.
+function mostrarErrorLogin() {
+    var alerta = document.getElementById('loginAlert');
+    var contrasena = document.getElementById('contrasena');
+
+    alerta.hidden = false;
+    contrasena.setAttribute('aria-invalid', 'true');
+    contrasena.focus();
+}
+
+document.getElementById('loginForm').addEventListener('submit', function (evento) {
+    evento.preventDefault();
+    mostrarErrorLogin();
+});
+
+document.getElementById('forzarError').addEventListener('click', mostrarErrorLogin);

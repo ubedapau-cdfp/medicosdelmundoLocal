@@ -19,7 +19,7 @@
             <section class="menuform"> <!-- Inicio del section menuform -->
                 <h1 class="h1login">Inicio de Sesión</h1> <!-- Párrafo de texto estilo h1 que sirve como título -->
                 &nbsp; <!-- Non-Breaking Space. Proporciona saltos de línea, con un espacio. -->
-                <form action='' method='POST'> <!-- Inicio de formulario con método POST -->
+                <form id='loginForm' action='' method='POST'> <!-- Inicio de formulario con método POST -->
                     <label for='usuaria'>Nombre de usuaria:</label> <!-- Texto para identificar el apartado 'Nombre' -->
                     <p></p> <!-- Separador -->
                     <input type='text' name='usuaria' id='usuaria' size='70' placeholder=' Usuaria' required> <!-- Campo de texto del apartado 'Nombre' obligatorio -->
@@ -32,15 +32,19 @@
                         <input type='password' name='contrasena' size='70' id='contrasena' placeholder=' •••••••' required> <!-- Campo de texto del apartado 'Contrasena' obligatorio -->
                         <!-- type='button' evita que este botón envíe el formulario. Su id lo conecta con JavaScript. -->
                         <!-- aria-label ayuda a los lectores de pantalla y title muestra una descripción al dejar el cursor encima. -->
-                        <button type='button' class='password-toggle is-hidden' id='mostrarContrasena' aria-label='Mostrar contraseña' title='Mostrar contraseña' onclick='cambiarContrasena()'>
+                        <button type='button' class='password-toggle is-hidden' id='mostrarContrasena' aria-label='Mostrar contraseña' aria-pressed='false' title='Mostrar contraseña' onclick='cambiarContrasena()'>
                             <!-- Estos elementos vacíos forman el ojo con CSS; aria-hidden evita que se lean como contenido. -->
                             <span class='password-toggle__icon' aria-hidden='true'><span></span></span>
                         </button>
                     </div>
                     <p></p> <!-- Separador -->
+                    <div class='login-alert' id='loginAlert' role='alert' aria-live='assertive' hidden>
+                        La contraseña es incorrecta. Inténtalo de nuevo.
+                    </div>
                     <div class="button-group">
-                        <button type='submit' class="defaultbutton"><a href='#'></a>Iniciar Sesión</button> <!-- Botón para iniciar sesión -->
-                        <button type='submit' class="defaultbutton"><a href='index.html'>Volver a Inicio</a></button> <!-- Botón con enlace que redirecciona a index.php -->
+                        <button type='submit' class="defaultbutton">Iniciar Sesión</button> <!-- Botón para iniciar sesión -->
+                        <button type='button' class="defaultbutton" id='forzarError'>Forzar error</button>
+                        <a class="defaultbutton" href='index.html'>Volver a Inicio</a>
                     </div>
                     <p></p> <!-- Separador -->
                 </form> <!-- Cierre del formulario -->
