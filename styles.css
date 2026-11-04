@@ -443,10 +443,18 @@ input[type=text], input[type=password]{
 }
 
 .button-group{
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.button-group .defaultbutton {
+    width: 100%;
+    min-width: 0;
+    margin-bottom: 15px;
+    padding: 0 4px;
+    font-size: clamp(12px, 1vw, 17px);
+    white-space: nowrap;
 }
 
 .defaultbutton a{
@@ -950,6 +958,10 @@ img, iframe {
   .defaultbutton {
     width: 100%;
     max-width: 320px;
+  }
+
+  .button-group {
+    grid-template-columns: 1fr;
   }
 }
 
