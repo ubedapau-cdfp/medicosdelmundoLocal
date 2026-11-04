@@ -1,0 +1,763 @@
+:root {
+    --navy: #0c1e3b;
+    --blue: #003f75;
+    --hover-bg: #b8deff;
+    --title: #00065f;
+    --bg: #f2f2f2;
+    --text: #000000;
+    --white: #ffffff;
+    --blue-hover-bg: #e6f3ff;
+    --blue-hover-text: #1d4387;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  background-color: var(--bg);
+}
+
+.sidenav {
+  height: 100%;
+  width: 260px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: var(--navy);
+  overflow-x: hidden;
+  padding-top: 20px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  transition: width 0.5s;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 16px 20px 30px;
+}
+
+.logo {
+  display: block;
+  max-width: 160px;
+  height: auto;
+}
+
+.closebtn {
+  color: var(--white);
+  font-size: 24px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.menu, .submenu, .dropdown-content {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  margin-bottom: 6px;
+}
+/* -- Estilos de los dropdowns JS -- */
+
+.dropbtn {
+  display: block;
+  width: 100%;
+  padding: 8px 10px 8px 16px;
+  border: 0;
+  background: none;
+  color: var(--white);
+  font: inherit;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus-visible {
+  background-color: var(--hover-bg);
+  color: var(--blue-hover-text);
+  transition: 0.2s;
+}
+
+.dropdown-content {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  padding-left: 16px;
+  opacity: 0;
+  visibility: hidden;
+  transition: linear 0.2s;
+}
+
+.dropdown-content.show {
+  max-height: 400px;
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dropdown-content {
+    transition: none;
+  }
+}
+
+.dropbtn i {
+  margin-left: 10px;
+}
+
+/* --  -- */
+.menu a {
+  padding: 8px 10px 8px 16px;
+  text-decoration: none;
+  font-size: 16px;
+  color: var(--white);
+  display: block;
+}
+
+.menu a:hover, .menu a:focus-visible {
+    background-color: var(--hover-bg);
+    color: var(--blue-hover-text);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.submenu {
+  padding-left: 16px;
+}
+
+.submenu a, .dropdown-content a {
+  font-size: 14px;
+}
+
+/* -- Estilos -- */
+.main {
+  margin-left: 260px;
+  transition: margin-left 0.5s;
+  padding:16px;
+  font-size: 28px;
+  padding: 0px 10px;
+}
+
+.home-page {
+  margin-left: 260px;
+  text-align: center;
+  transition: margin-left 0.5s;
+}
+
+.home-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.home-header .logo {
+  width: 50px;
+  height: 50px;
+}
+
+.open-nav-button {
+  display: none;
+  padding: 30px;
+  border: 0;
+  background: none;
+  color: var(--navy);
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.sidenav.is-closed ~ .main .open-nav-button {
+  display: block;
+}
+
+.home-page .imagenes figure {
+  flex: 1 1 300px;
+  max-width: 600px;
+  min-width: 0;
+  margin: 0;
+}
+
+.home-page .imagenes {
+  flex-wrap: wrap;
+}
+
+.home-page .imagenes img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* -- Estilos para el botón de inicio de sesión -- */
+.loginbtn{
+    position: absolute;
+    bottom: 20px;
+    width: 70%;
+    right: 20px;
+    text-align: center;
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.loginbtn:hover{
+    background-color: var(--blue-hover-bg);
+    color: var(--blue-hover-text);
+    transition: 0.2s;
+}
+
+/* -- Estilos para los h1 -- */
+h1{
+    text-align:center;
+    font-size:36px;
+    font-weight:700;
+    color: var(--title);
+}
+
+/* -- Estilos para los párrafos -- */
+p{
+    text-align:center;
+    font-size:16px;
+    font-weight:500;
+}
+
+/* -- Estilos para las imágenes -- */
+.imagenes{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    align-items:flex-start;
+    margin-top:105px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .menu a {font-size: 18px;}
+  .submenu a, .dropdown-content a {font-size: 14px;}
+}
+
+/* -- Apartado del Login -- */
+/* -- Este código ha sido parcialmente heredado del proyecto original (Médicos del Mundo, Reto 4 -- */
+
+
+/* CONTAINER loginMenu */
+.loginMenu{
+    display:flex; /* CONTENEDOR FLEXIBLE */
+    width:100%; /* ANCHURA */
+    min-height:100vh; /* ALTURA MÍNIMA */
+}
+
+/* CONTAINER ladoIzqdo */
+.ladoIzqdo{
+    background-image:url(Imagenes/loginimage.png); /* IMÁGEN USADA PARA EL FONDO */
+    background-repeat: no-repeat; /* QUE NO SE REPITA, SÓLO SEA UNA IMÁGEN */
+    background-size: cover; /* QUE CUBRA TODA LA PANTALLA */      
+    background-position: center; /* QUE LA POSICIÓN SEA CENTRADA */
+    flex:0.5; /* OCUPACIÓN DEL 50% DEL ESPACIO DISPONIBLE DEL CONTENEDOR */
+
+}
+
+/* CONTAINER ladoDcho */
+.ladoDcho{
+    background-color:var(--blue); /* COLOR DEL FONDO */
+    background-image:url(Imagenes/loginimage2.png); /* IMÁGEN USADA PARA EL FONDO*/
+    background-repeat: no-repeat; /* QUE NO SE REPITA, SÓLO SEA UNA IMÁGEN */
+    background-size:cover; /* QUE CUBRA TODA LA PANTALLA */
+    flex:1; /* OCUPACIÓN DE TODO EL ESPACIO DISPONIBLE EN EL CONTENEDOR */
+    color: var(--white); /* COLOR DEL TEXTO */
+}
+
+/* CONTAINER menuform */
+.menuform{
+    display:block; /*  */
+    background-color:var(--blue); /* COLOR DEL FONDO */
+    padding:100px; /* ESPACIO ENTRE ELEMENTOS */
+    margin-top:150px; /* MARGEN RESPECTO ARRIBA */
+    margin-left:250px; /* MARGEN RESPECTO LA IZQUIERDA */
+    margin-right:250px; /* MARGEN RESPECTO LA DERECHA */
+    border-radius:10px; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
+}
+
+/* ESTILOS DE LOS TAG <h1>,<a>,<label> DEL CONTAINER menuform */
+.menuform .h1login, .menuform a, .menuform label{
+    color:var(--white); /* COLOR DEL TEXTO */
+}
+
+
+/* ESTILOS DE TODOS LOS INPUT DE TIPO TEXTO O CONTRASEÑA */
+input[type=text], input[type=password]{
+    font-family: 'Manrope', 'Segoe UI', sans-serif; /* ORDEN DE FUENTES A USAR */
+    height:30px; /* ALTURA */
+    border-color: var(--blue); /* COLOR DEL BORDE */
+    border-style:solid; /* TIPO DE BORDE SÓLIDO */
+    margin-bottom:15px; /* MARGEN RESPECTO ABAJO */
+    border-radius:10px; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
+    font-size:17px; /* TAMAÑO DEL TEXTO */
+}
+
+  /* El contenedor sirve de referencia para colocar el botón dentro del campo. */
+  .login-body .password-field{
+    /* Permite posicionar el botón con respecto a este contenedor. */
+    position:relative;
+    /* Hace que el campo ocupe todo el ancho disponible. */
+    width:100%;
+    /* Mantiene el espacio que antes quedaba debajo del campo. */
+    margin-bottom:15px;
+  }
+
+  /* Ajusta solo el input de contraseña que está dentro del contenedor anterior. */
+  .login-body .password-field input{
+    /* Incluye borde y relleno dentro del ancho indicado. */
+    box-sizing:border-box;
+    width:100%;
+    /* Reserva espacio a la derecha para que el texto no quede debajo del ojo. */
+    padding-right:48px;
+    /* El espacio inferior lo controla el contenedor, no el input. */
+    margin-bottom:0;
+  }
+
+  .login-body .password-toggle{
+    position:absolute;
+    top:50%;
+    right:1px;
+    display:grid;
+    width:28px;
+    height:28px;
+    padding:0;
+    place-items:center;
+    transform:translateY(-50%);
+    border:0;
+    border-radius:0;
+    background:transparent;
+    box-shadow:none;
+    color:var(--blue);
+    cursor:pointer;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .login-body .password-toggle:active{
+    transform:translateY(-50%) scale(0.94);
+  }
+
+  .login-body .password-toggle:focus-visible{
+    outline:3px solid var(--wh);
+    outline-offset:3px;
+    box-shadow:0 0 0 6px #b8deffcc;
+  }
+
+  .password-toggle__icon{
+    position:relative;
+    display:grid;
+    width:17px;
+    height:11px;
+    place-items:center;
+    border:2px solid currentColor;
+    border-radius:50%;
+    transform:rotate(0deg);
+    transition:transform 0.25s ease, border-radius 0.25s ease;
+  }
+
+  .password-toggle__icon span{
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background-color:currentColor;
+    transform:rotate(0) scale(1);
+  }
+
+  .password-toggle__icon::after{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:24px;
+    height:2px;
+    transform:translate(-50%, -50%) rotate(45deg);
+    border-radius:2px;
+    background-color:currentColor;
+    content:'';
+  }
+
+  .password-toggle:not(.is-hidden) .password-toggle__icon{
+    transform:rotate(0);
+    border-radius:50%;
+  }
+
+  .password-toggle:not(.is-hidden) .password-toggle__icon::after{
+    opacity:0;
+    transform:translate(-50%, -50%) rotate(45deg) scaleX(0);
+  }
+
+  .password-toggle:not(.is-hidden) .password-toggle__icon span{
+    transform:rotate(0) scale(1.15);
+  }
+
+
+
+
+  @media (prefers-reduced-motion: reduce){
+    .login-body .password-toggle,
+    .password-toggle__icon,
+    .password-toggle__icon span,
+    .password-toggle__icon::after{
+      transition:none;
+    }
+
+    .password-toggle.is-spinning .password-toggle__icon{
+      animation:none;
+    }
+  }
+
+.defaultbutton{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    font-family: 'Manrope', 'Segoe UI', sans-serif; /* ORDEN DE FUENTES A USAR */
+    height:40px; /* ALTURA */
+    border-color: var(--blue-hover-bg); /* COLOR DEL BORDE */
+    border-style:solid; /* TIPO DE BORDE SÓLIDO */
+    margin-bottom:15px; /* MARGEN RESPECTO ABAJO */
+    border-radius:5px; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
+    font-size:17px; /* TAMAÑO DEL TEXTO */
+    background-color: var(--blue-hover-bg); /* COLOR DEL FONDO */
+    color: var(--blue-hover-text); /* COLOR DEL TEXTO */
+    cursor:pointer; /* CURSOR DE PUNTERO */
+    width: 200px;
+    font-weight: 700; /* NEGRITA */
+    text-decoration: none;/* SIN SUBRAYADO */
+    
+}
+
+.button-group{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.defaultbutton a{
+    text-decoration: none; /* SIN SUBRAYADO */
+    color:var(--blue-hover-text); /* COLOR DEL TEXTO */
+}
+
+.login-alert{
+    margin: 0 auto 15px;
+    padding: 12px 16px;
+    border: 2px solid #ffb4ab;
+    border-radius: 5px;
+    background-color: #fff0ee;
+    color: #8a1c13;
+    font-weight: 700;
+    text-align: center;
+}
+
+.login-alert[hidden]{
+    display: none;
+}
+
+.defaultbutton:hover{
+    background-color:var(--hover-bg); /* COLOR DEL FONDO */
+    border-color:var(--hover-bg); /* COLOR DEL BORDE */
+    color:var(--blue); /* COLOR DEL TEXTO */
+    transition:0.2s; /* TRANSICIÓN DE 0.2 SEGUNDOS */
+}
+
+/* - DERECHOS INICIALES - */
+
+  .apartados .intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+  }
+  .apartados .tema {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  .apartados .tema figure {
+    flex: 0 0 40%;
+    margin: 0;
+  }
+  .apartados .tema img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  .apartados .tema .texto {
+    flex: 1;
+  }
+  .apartados .tema h2 {
+    margin: 0 0 0.75rem;
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 1.1;
+  }
+  .apartados .tema p {
+    margin: 0;
+    line-height: 1.5;
+  }
+  @media (max-width: 800px) {
+    .apartados .tema {
+      flex-direction: column;
+    }
+    .apartados .tema figure {
+      flex-basis: auto;
+      width: 100%;
+    }
+  }
+
+  /* - SOBRE NOSTRAS - */
+  .sobrenosotras {
+    font-size: 16px;
+  }
+  .sobrenosotras h1 {
+    margin: 18px 0 8px;
+    font-size: 36px;
+    font-weight: 700;
+  }
+  .sobrenosotras section {
+    margin-bottom: 10px;
+  }
+  .sobrenosotras h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+  .sobrenosotras p {
+    margin: 0 0 0.75rem;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .sobrenosotras .direccion {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+  }
+ 
+  .sobrenosotras .direccion iframe {
+    display: block;
+    flex: 0 1 48%;
+    height: 225px;
+    border: 0;
+  }
+.sobrenosotras a{
+    color: var(--blue);
+    text-decoration: none;
+}
+
+
+  /* - SUBAPARTADOS -*/
+    .subapartados h1 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  .subapartados .intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+  }
+  .subapartados section {
+    margin-bottom: 1.5rem;
+  }
+  .subapartados h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+  .subapartados p {
+    margin: 0 0 0.75rem;
+    line-height: 1.5;
+  }
+  .subapartados .destacado {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .subapartados .destacado figure {
+    flex: 0 0 40%;
+    margin: 0;
+  }
+  .subapartados .destacado img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .subapartados .destacado .texto {
+    flex: 1;
+  }
+  .subapartados .enlaces {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+  }
+  .subapartados .enlaces li {
+    margin-bottom: 0.6rem;
+    line-height: 1.4;
+    font-size:16px;
+  }
+  @media (max-width: 800px) {
+    .subapartados .destacado {
+      flex-direction: column;
+    }
+    .subapartados .destacado figure {
+      flex-basis: auto;
+      width: 100%;
+    }
+  }
+  /* - FAQS - */
+    .faqs h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .faqs section {
+    margin-bottom: 1.5rem;
+  }
+  .faqs h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+  .faqs p {
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* ===== TRADUCTOR DARÍO ===== */
+
+/* Contenedor del selector de idioma (el <aside>) */
+.translator {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  box-sizing: border-box;
+  min-width: 228px;
+  margin: 4px 16px 14px;
+  padding: 8px;
+  border: 1px solid var(--blue);
+  border-radius: 6px;
+  background: var(--blue);
+}
+
+/* Texto "Idioma" */
+.translator-label {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  margin: 0;
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* El <select> (con flecha dibujada con gradientes) */
+.translator-select {
+  box-sizing: border-box;
+  flex: 1 1 90px;
+  width: 1%;
+  min-width: 0;
+  min-height: 36px;
+  padding: 6px 42px 6px 10px;
+  appearance: none;
+  border: 1px solid var(--blue);
+  border-radius: 7px;
+  background-color: var(--white);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--white) 50%),
+    linear-gradient(135deg, var(--white) 50%, transparent 50%),
+    linear-gradient(var(--blue), var(--blue));
+  background-position:
+    calc(100% - 17px) 16px,
+    calc(100% - 12px) 16px,
+    right top;
+  background-repeat: no-repeat;
+  background-size: 5px 5px, 5px 5px, 34px 100%;
+  color: var(--navy);
+  font: 700 12px "Manrope", sans-serif;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.translator-select:hover:not(:disabled) {
+  border-color: var(--hover-bg);
+  background-color: var(--blue-hover-bg);
+  color: var(--blue-hover-text);
+}
+
+.translator-select:focus-visible {
+  outline: 3px solid var(--hover-bg);
+  outline-offset: 2px;
+}
+
+/* Estado desactivado (cuando falla la carga de Google) */
+.translator-select:disabled {
+  background-color: #e9ecef;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--white) 50%),
+    linear-gradient(135deg, var(--white) 50%, transparent 50%),
+    linear-gradient(#3b3b3b, #3b3b3b);
+  color: #3b3b3b;
+  cursor: wait;
+}
+
+.translator-select option {
+  background: var(--white);
+  color: var(--navy);
+}
+
+/* Mensaje de estado (ej. "No disponible sin conexión") */
+.translator-status {
+  flex: 1 0 100%;
+  margin: 0;
+  color: var(--navy);
+  font-size: 10px;
+  line-height: 1.4;
+  text-align: left;
+}
+
+/* Si no tiene texto, no ocupa espacio */
+.translator-status:empty {
+  display: none;
+}
+
+/* Contenedor oculto que usa Google Translate */
+.translator-engine {
+  display: none !important;
+}
+
+/* Versión flotante (páginas sin .sidenav) en pantallas pequeñas */
+
+@media (prefers-reduced-motion: reduce) {
+  .translator-select {
+    transition: none;
+  }
+}
+
+/* Oculta la barra azul que Google inserta arriba al traducir
+   y el desplazamiento que añade al <body> */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+/* -- RESPONSIVE MEDIA -- */
+
+@media (max-width: 900px){
+  .sidenav{width:0}            /* parte cerrada; el botón la abre */
+  .main{margin-left:0}
+  .menuform{margin:20px;padding:20px}
+}
