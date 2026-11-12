@@ -98,6 +98,53 @@
     document.documentElement.lang = lang;
   });
 
+  // --- NAVEGACIÓN POR TECLADO MEJORADA ---
+  // Permite salir del selector con Tab/Escape tras elegir una opción
+  select.addEventListener("keydown", (event) => {
+    const key = event.key;
+
+    // Escape: cierra el selector y mantiene el foco en él
+    if (key === "Escape") {
+      select.blur(); // Cierra el dropdown nativo
+      return;
+    }
+
+    // Enter: confirma la selección, cierra el dropdown y mueve el foco al siguiente elemento
+    if (key === "Enter") {
+      // Usamos un microtask (Promise) que se ejecuta después del handler actual
+      // pero antes del siguiente macrotask, asegurando que el evento "change" se haya procesado
+      Promise.resolve().then(() => {
+        // Fuerza el cierre del dropdown nativo
+        select.blur();
+
+        // Busca el siguiente elemento enfocable en el orden de tabulación
+        const focusableElements = Array.from(
+          document.querySelectorAll(
+            'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+          )
+        );
+        const currentIndex = focusableElements.indexOf(select);
+        if (currentIndex !== -1 && currentIndex < focusableElements.length - 1) {
+          focusableElements[currentIndex + 1].focus();
+        }
+      });
+    }
+
+    // Tab: permite navegación normal, pero asegura que el select se cierre si estaba abierto
+    if (key === "Tab") {
+      // Pequeño delay para permitir que el select se cierre naturalmente
+      setTimeout(() => {
+        select.blur();
+      }, 0);
+    }
+  });
+
+  // También manejamos el evento "blur" para asegurar que el selector se cierra correctamente
+  select.addEventListener("blur", () => {
+    // Fuerza el cierre del dropdown nativo en algunos navegadores
+    select.value = select.value; // No-op que ayuda a cerrar el select en algunos casos
+  });
+
   // Carga el script de Google de forma asíncrona
   const script = document.createElement("script");
   script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
