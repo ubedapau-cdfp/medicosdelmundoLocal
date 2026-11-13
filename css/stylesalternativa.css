@@ -24,7 +24,7 @@
 }
 .theme-toggle--login {
   width: 200px;
-  margin: 0 auto 14px;
+  margin: 12px auto 14px;
   border-color: var(--blue-hover-bg);
   background-color: var(--blue-hover-bg);
   color: var(--blue-hover-text);

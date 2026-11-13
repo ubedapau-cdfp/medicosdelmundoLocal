@@ -110,20 +110,6 @@
     margin-top: 24px;
   }
 
-  // --- Login: las dos mitades se apilan ---
-  .loginMenu {
-    flex-direction: column;
-  }
-
-  .ladoIzqdo {
-    flex: none;
-    min-height: 160px;
-  }
-
-  .menuform {
-    margin: 20px;
-    padding: 24px;
-  }
 }
 
 // --- Móvil (600px o menos) ---
@@ -155,23 +141,6 @@
     }
   }
 
-  .ladoIzqdo {
-    min-height: 100px;
-  }
-
-  .menuform {
-    margin: 12px;
-    padding: 20px;
-  }
-
-  .defaultbutton {
-    width: 100%;
-    max-width: 320px;
-  }
-
-  .button-group {
-    grid-template-columns: 1fr;
-  }
 }
 
 // El menú y la capa oscura sin animación si el usuario lo prefiere
