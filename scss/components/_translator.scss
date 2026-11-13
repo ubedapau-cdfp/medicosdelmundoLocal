@@ -1,0 +1,117 @@
+// ============================================================
+// TRADUCTOR (Darío)
+// Con "&-label", "&-select"... Sass escribe .translator-label,
+// .translator-select, etc.
+// ============================================================
+@use "../abstracts" as *;
+
+// Contenedor del selector de idioma (el <aside>)
+.translator {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  box-sizing: border-box;
+  min-width: 228px;
+  margin: 4px 16px 14px;
+  padding: 8px;
+  border: 1px solid $blue;
+  border-radius: 6px;
+  background: $blue;
+
+  // Texto "Idioma"
+  &-label {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    margin: 0;
+    color: $white;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  // El <select> (con la flecha dibujada con gradientes)
+  &-select {
+    box-sizing: border-box;
+    flex: 1 1 90px;
+    width: 1%;
+    min-width: 0;
+    min-height: 36px;
+    padding: 6px 42px 6px 10px;
+    appearance: none;
+    border: 1px solid $blue;
+    border-radius: 7px;
+    background-color: $white;
+    background-image:
+      linear-gradient(45deg, transparent 50%, $white 50%),
+      linear-gradient(135deg, $white 50%, transparent 50%),
+      linear-gradient($blue, $blue);
+    background-position:
+      calc(100% - 17px) 16px,
+      calc(100% - 12px) 16px,
+      right top;
+    background-repeat: no-repeat;
+    background-size: 5px 5px, 5px 5px, 34px 100%;
+    color: $navy;
+    font: 700 12px "Manrope", sans-serif;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s, color 0.2s;
+
+    &:hover:not(:disabled) {
+      border-color: $hover-bg;
+      background-color: $blue-hover-bg;
+      color: $blue-hover-text;
+    }
+
+    &:focus-visible {
+      outline: 3px solid $hover-bg;
+      outline-offset: 2px;
+    }
+
+    // Estado desactivado (cuando falla la carga de Google)
+    &:disabled {
+      background-color: #e9ecef;
+      background-image:
+        linear-gradient(45deg, transparent 50%, $white 50%),
+        linear-gradient(135deg, $white 50%, transparent 50%),
+        linear-gradient(#3b3b3b, #3b3b3b);
+      color: #3b3b3b;
+      cursor: wait;
+    }
+
+    option {
+      background: $white;
+      color: $navy;
+    }
+
+    @include sin-animacion {
+      transition: none;
+    }
+  }
+
+  // Mensaje de estado (ej. "No disponible sin conexión")
+  &-status {
+    flex: 1 0 100%;
+    margin: 0;
+    color: $white;
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: left;
+
+    // Si no tiene texto, no ocupa espacio
+    &:empty {
+      display: none;
+    }
+  }
+
+  // Contenedor oculto que usa Google Translate
+  &-engine {
+    display: none !important;
+  }
+}
+
+// Oculta la barra azul que Google inserta arriba al traducir
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}

@@ -1,0 +1,12 @@
+{
+  "name": "proyecto-scss",
+  "version": "1.0.0",
+  "description": "Estilos de la web en SCSS (tema claro y tema oscuro)",
+  "scripts": {
+    "build:css": "sass scss/styles.scss:css/styles.css scss/stylesalternativa.scss:css/stylesalternativa.css",
+    "watch:css": "sass --watch scss:css"
+  },
+  "devDependencies": {
+    "sass": "^1.80.0"
+  }
+}

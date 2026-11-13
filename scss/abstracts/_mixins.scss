@@ -1,0 +1,30 @@
+@use "variables" as *;
+
+// Aspecto de un elemento del menú cuando se pasa el ratón por encima
+@mixin menu-hover {
+  background-color: $hover-bg;
+  color: $blue-hover-text;
+}
+
+// Botón azul con texto blanco (login y registro)
+@mixin boton-azul {
+  background-color: $blue;
+  color: $white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+// Hover claro de los botones azules
+@mixin boton-azul-hover {
+  background-color: $blue-hover-bg;
+  color: $blue-hover-text;
+  transition: 0.2s;
+}
+
+// Para quien prefiere menos animación: la desactivamos
+@mixin sin-animacion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}

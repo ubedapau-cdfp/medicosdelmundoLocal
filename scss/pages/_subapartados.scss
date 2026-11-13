@@ -1,0 +1,79 @@
+// ============================================================
+// SUBAPARTADOS
+// ============================================================
+@use "../abstracts" as *;
+
+.subapartados {
+  font-size: 16px;
+
+  h1 {
+    margin: 18px 0 8px;
+    text-align: left;
+    font-size: 26px;
+  }
+
+  .intro {
+    text-align: center;
+    margin: 0 0 2rem;
+  }
+
+  section {
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    margin: 0 0 0.5rem;
+    font-size: 26px;
+    font-weight: 700;
+    color: $title;
+  }
+
+  p {
+    margin: 0 0 0.75rem;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .destacado {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-top: 2rem;
+
+    figure {
+      flex: 0 0 40%;
+      margin: 0;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .texto {
+      flex: 1;
+    }
+
+    @media (max-width: $bp-medio) {
+      flex-direction: column;
+
+      figure {
+        flex-basis: auto;
+        width: 100%;
+      }
+    }
+  }
+
+  .enlaces {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+
+    li {
+      margin-bottom: 0.6rem;
+      line-height: 1.4;
+      font-size: 16px;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+// ============================================================
+// stylesalternativa.scss  ->  compila a css/stylesalternativa.css
+// Botón de cambio de tema + tema oscuro.
+// En el HTML se enlaza DESPUÉS de styles.css, porque solo
+// sobrescribe lo que cambia en el tema oscuro.
+// ============================================================
+@use "components/theme-toggle";
+@use "themes/dark";

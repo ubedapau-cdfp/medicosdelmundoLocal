@@ -1,0 +1,34 @@
+// ============================================================
+// styles.scss  ->  compila a css/styles.css
+// Archivo principal: solo importa los partials, en este orden.
+// EL ORDEN IMPORTA: lo que se escribe después gana si dos reglas
+// tienen la misma especificidad (por eso responsive va el último).
+// ============================================================
+
+// 1. Base: colores del tema claro y etiquetas generales
+@use "base/root";
+@use "base/base";
+
+// 2. Layout: estructura de la página
+@use "layout/sidenav";
+@use "layout/main";
+
+// 3. Components: piezas reutilizables
+@use "components/dropdown";
+@use "components/open-nav-button";
+@use "components/buttons";
+@use "components/forms";
+@use "components/password-toggle";
+@use "components/alert";
+@use "components/translator";
+
+// 4. Pages: estilos propios de cada página
+@use "pages/home";
+@use "pages/login";
+@use "pages/apartados";
+@use "pages/sobrenosotras";
+@use "pages/subapartados";
+@use "pages/faqs";
+
+// 5. Responsive (tablet y móvil): siempre el último
+@use "layout/responsive";

@@ -1,0 +1,53 @@
+// ============================================================
+// DROPDOWNS DEL MENÚ (los controla el JS)
+// ============================================================
+@use "../abstracts" as *;
+
+.dropbtn {
+  display: block;
+  width: 100%;
+  padding: 8px 10px 8px 16px;
+  border: 0;
+  background: none;
+  color: $white;
+  font: inherit;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    @include menu-hover;
+    transition: 0.2s;
+  }
+
+  i {
+    margin-left: 10px;
+  }
+}
+
+.dropdown-content {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  padding-left: 16px;
+  opacity: 0;
+  visibility: hidden;
+  transition: linear 0.2s;
+
+  // Cuando el JS le añade la clase "show", se despliega
+  &.show {
+    max-height: 400px;
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+
+  a {
+    font-size: 14px;
+  }
+
+  @include sin-animacion {
+    transition: none;
+  }
+}

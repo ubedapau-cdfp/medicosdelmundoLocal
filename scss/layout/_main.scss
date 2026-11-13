@@ -1,0 +1,9 @@
+// ============================================================
+// CONTENIDO PRINCIPAL
+// ============================================================
+.main {
+  margin-left: 260px;
+  transition: margin-left 0.5s;
+  font-size: 28px;
+  padding: 0 10px; // (antes había un padding:16px que esta línea anulaba)
+}

@@ -1,0 +1,48 @@
+// ============================================================
+// BOTÓN PARA CAMBIAR DE TEMA (claro / oscuro)
+// ============================================================
+@use "../abstracts" as *;
+
+.theme-toggle {
+  display: block;
+  box-sizing: border-box;
+  width: calc(100% - 32px);
+  min-height: 40px;
+  margin: 0 16px 14px;
+  padding: 8px 10px;
+  border: 1px solid $white;
+  border-radius: 6px;
+  background: transparent;
+  color: $white;
+  font: 700 13px "Manrope", sans-serif;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+
+  // Hover, foco y también cuando el tema oscuro está activado (aria-pressed)
+  &:hover,
+  &:focus-visible,
+  &[aria-pressed="true"] {
+    background-color: $hover-bg;
+    color: $blue-hover-text;
+  }
+
+  &:focus-visible {
+    outline: 3px solid $hover-bg;
+    outline-offset: 2px;
+  }
+
+  // Versión para la página de login (más clara y centrada)
+  &--login {
+    width: 200px;
+    margin: 0 auto 14px;
+    border-color: $blue-hover-bg;
+    background-color: $blue-hover-bg;
+    color: $blue-hover-text;
+    text-align: center;
+  }
+
+  @include sin-animacion {
+    transition: none;
+  }
+}

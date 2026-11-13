@@ -1,0 +1,84 @@
+// ============================================================
+// BOTONES
+// ============================================================
+@use "../abstracts" as *;
+
+// -- Botón de inicio de sesión (menú lateral) --
+.loginbtn {
+  @include boton-azul;
+  position: absolute;
+  bottom: 20px;
+  width: 70%;
+  right: 20px;
+  text-align: center;
+
+  &:hover {
+    @include boton-azul-hover;
+  }
+}
+
+// -- Botón de registro --
+.regbtn {
+  @include boton-azul;
+  display: inline-block;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    @include boton-azul-hover;
+  }
+}
+
+// -- Botón claro por defecto --
+.defaultbutton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  height: 40px;
+  border-color: $blue-hover-bg;
+  border-style: solid;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  font-size: 17px;
+  background-color: $blue-hover-bg;
+  color: $blue-hover-text;
+  cursor: pointer;
+  width: 200px;
+  font-weight: 700;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $hover-bg;
+    border-color: $hover-bg;
+    color: $blue;
+    transition: 0.2s;
+  }
+
+  a {
+    text-decoration: none;
+    color: $blue-hover-text;
+  }
+}
+
+// -- Grupo de botones: se reparten el ancho en columnas --
+.button-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+
+  .defaultbutton {
+    width: 100%;
+    min-width: 0;
+    height: auto; // antes fijo en 40px: ahora puede crecer si el texto se parte
+    min-height: 40px;
+    margin-bottom: 0; // el espacio lo da ahora el gap
+    padding: 6px 8px;
+    font-size: 15px;
+    white-space: normal; // antes nowrap: era lo que cortaba el texto
+    text-align: center;
+  }
+}

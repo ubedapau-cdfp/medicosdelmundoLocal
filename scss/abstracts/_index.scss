@@ -1,0 +1,4 @@
+// Un solo punto de entrada: cada archivo escribe @use "../abstracts" as *;
+// y tiene a mano las variables y los mixins.
+@forward "variables";
+@forward "mixins";

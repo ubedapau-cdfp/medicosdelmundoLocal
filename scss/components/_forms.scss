@@ -1,0 +1,15 @@
+// ============================================================
+// FORMULARIOS: campos de texto y contraseña
+// ============================================================
+@use "../abstracts" as *;
+
+input[type="text"],
+input[type="password"] {
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  height: 30px;
+  border-color: $blue;
+  border-style: solid;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  font-size: 17px;
+}
