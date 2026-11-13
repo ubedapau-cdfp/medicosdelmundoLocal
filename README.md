@@ -1,6 +1,4 @@
-# Proyecto SCSS (tema claro + tema oscuro)
-
-## Estructura
+## Estructura de carpetas del SCSS/CSS
 
 ```
 scss/
@@ -36,20 +34,3 @@ scss/
 └── themes/
     └── _dark.scss           tema oscuro (data-theme="alt")
 css/                         CSS ya compilado
-```
-
-## Compilar
-
-Con Sass instalado (`npm install -g sass`, o `npm install` dentro de esta carpeta):
-
-- Una vez: `npm run build`  (equivale a `sass scss:css`)
-- Al guardar: `npm run watch`
-
-## En el HTML
-
-```html
-<link rel="stylesheet" href="css/styles.css">
-<link rel="stylesheet" href="css/stylesalternativa.css">
-```
-
-`stylesalternativa.css` va después de `styles.css`.
