@@ -10,6 +10,44 @@
     --blue-hover-text: #1d4387;
 }
 
+/* --- Skip to content link (accesibilidad) --- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  background-color: var(--blue);
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 0 0 6px 6px;
+  z-index: 100;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid var(--hover-bg);
+  outline-offset: 2px;
+}
+
+/* --- Current page indicator in navigation --- */
+.menu a[aria-current="page"],
+.dropdown-content a[aria-current="page"] {
+  background-color: var(--hover-bg);
+  color: var(--blue-hover-text);
+  font-weight: 700;
+}
+
+.menu a[aria-current="page"]:hover,
+.menu a[aria-current="page"]:focus-visible,
+.dropdown-content a[aria-current="page"]:hover,
+.dropdown-content a[aria-current="page"]:focus-visible {
+  background-color: var(--blue-hover-bg);
+  color: var(--blue-hover-text);
+}
+
 body {
   font-family: "Manrope", sans-serif;
   margin: 0;

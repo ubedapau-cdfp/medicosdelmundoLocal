@@ -14,7 +14,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-<nav class="sidenav" id="sidenav" aria-label="Main navigation">
+<a href="#contenido" class="skip-link">Saltar al contenido</a>
+<nav class="sidenav" id="sidenav" aria-label="Navegación principal">
     <div class="sidebar-header">
         <a href="index.html"><img src="Imagenes/logo.png" alt="Logo" class="logo" width="50" height="50"></a>
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fa-solid fa-xmark"></i></a>
@@ -47,7 +48,7 @@
             <ul class="dropdown-content" id="proteccion-cambios">
                 <li><a href="cambiosdecondiciones.html">Cambios de Condiciones</a></li>
                 <li><a href="maternidadypausas.html">Maternidad y Pausas</a></li>
-                <li><a href="despidoycierre.html">Despido y Cierre</a></li>
+                <li><a href="despidoycierre.html" aria-current="page">Despido y Cierre</a></li>
                 <li><a href="finiquitoyliquidacion.html">Finiquito y Liquidación</a></li>
             </ul>
         </li>
@@ -73,9 +74,9 @@
     </ul>
     <a class="loginbtn" href="login.html">Iniciar Sesión</a>
 </nav>
-<main class="main subapartados" id="main">
+<main class="main subapartados" id="contenido">
   <div class="home-header">
-    <button class="open-nav-button" type="button" aria-label="Open navigation" onclick="openNav()"><i class="fa-solid fa-bars"></i></button>
+    <button class="open-nav-button" type="button" aria-label="Abrir menú" onclick="openNav()"><i class="fa-solid fa-bars"></i></button>
   </div>
   <h1>Despido y Cierre</h1>
   <p class="lead intro">Tipos de despido y cómo defender tus derechos.</p>

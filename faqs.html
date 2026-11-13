@@ -14,7 +14,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-<nav class="sidenav" id="sidenav" aria-label="Main navigation">
+<a href="#contenido" class="skip-link">Saltar al contenido</a>
+<nav class="sidenav" id="sidenav" aria-label="Navegación principal">
     <div class="sidebar-header">
         <a href="index.html"><img src="Imagenes/logo.png" alt="Logo" class="logo" width="50" height="50"></a>
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fa-solid fa-xmark"></i></a>
@@ -69,13 +70,13 @@
             </ul>
         </li>
         <li><a href="sobrenosotras.html">Sobre Nosotras</a></li>
-        <li><a href="faqs.html">FAQs</a></li>
+        <li><a href="faqs.html" aria-current="page">FAQs</a></li>
     </ul>
     <a class="loginbtn" href="login.html">Iniciar Sesión</a>
 </nav>
-<main class="main faqs" id="main">
+<main class="main faqs" id="contenido">
   <div class="home-header">
-    <button class="open-nav-button" type="button" aria-label="Open navigation" onclick="openNav()"><i class="fa-solid fa-bars"></i></button>
+    <button class="open-nav-button" type="button" aria-label="Abrir menú" onclick="openNav()"><i class="fa-solid fa-bars"></i></button>
   </div>
   <h1>Preguntas Frecuentes</h1>
 
