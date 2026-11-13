@@ -1,0 +1,154 @@
+// ============================================================
+// RESPONSIVE: TABLET Y MÓVIL
+// Va el ÚLTIMO de la web porque sobrescribe reglas anteriores
+// (a igual especificidad gana lo que se escribe después).
+//
+// Escritorio (más de 900px): el menú empuja el contenido.
+// Tablet y móvil (900px o menos): el menú es un panel superpuesto,
+// cerrado por defecto, que se abre con el botón de hamburguesa y se
+// cierra con la X, tocando fuera (.nav-backdrop) o con Escape
+// (openSidebar.js).
+// ============================================================
+@use "../abstracts" as *;
+
+// Pantallas muy bajas (móvil en horizontal)
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .menu a {
+    font-size: 18px;
+  }
+
+  .submenu a,
+  .dropdown-content a {
+    font-size: 14px;
+  }
+}
+
+// --- Tablet (900px o menos) ---
+@media (max-width: $bp-tablet) {
+  // --- Menú lateral como panel superpuesto ---
+  .sidenav,
+  .sidenav.is-closed {
+    width: 260px;
+    max-width: 85vw;
+    z-index: 20;
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform 0.3s ease, visibility 0s linear 0.3s;
+  }
+
+  .sidenav.is-open {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform 0.3s ease, visibility 0s;
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.35);
+  }
+
+  .nav-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0s linear 0.3s;
+  }
+
+  body.nav-open {
+    overflow: hidden; // evita que se desplace la página de detrás
+
+    .nav-backdrop {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.3s;
+    }
+  }
+
+  // --- Contenido a todo el ancho y botón de abrir siempre visible ---
+  .main,
+  .home-page,
+  .sidenav.is-closed ~ .main {
+    margin-left: 0;
+  }
+
+  .open-nav-button {
+    display: block;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 12px 16px;
+    font-size: 28px;
+  }
+
+  // --- Zonas táctiles de al menos 44px ---
+  .closebtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .dropbtn,
+  .menu a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  // El botón de sesión pasa al flujo normal para no solaparse al hacer scroll
+  .loginbtn {
+    position: static;
+    display: block;
+    width: auto;
+    margin: 20px 16px;
+  }
+
+  .imagenes {
+    margin-top: 24px;
+  }
+
+}
+
+// --- Móvil (600px o menos) ---
+@media (max-width: $bp-movil) {
+  h1 {
+    font-size: 28px;
+  }
+
+  .main {
+    padding: 0 14px;
+  }
+
+  .home-page .imagenes figure {
+    flex-basis: 100%;
+  }
+
+  .apartados .tema h2 {
+    font-size: 1.8rem;
+  }
+
+  .sobrenosotras .direccion {
+    flex-direction: column;
+    align-items: stretch;
+
+    iframe {
+      flex: none;
+      width: 100%;
+      height: 260px;
+    }
+  }
+
+}
+
+// El menú y la capa oscura sin animación si el usuario lo prefiere
+@include sin-animacion {
+  .sidenav,
+  .sidenav.is-closed,
+  .sidenav.is-open,
+  .nav-backdrop {
+    transition: none;
+  }
+}

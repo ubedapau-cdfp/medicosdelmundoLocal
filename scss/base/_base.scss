@@ -1,0 +1,30 @@
+// ============================================================
+// ESTILOS BASE: etiquetas generales de toda la web
+// ============================================================
+@use "../abstracts" as *;
+
+body {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  background-color: $bg;
+  // Google Translate añade un desplazamiento al <body> al traducir; lo anulamos
+  top: 0 !important;
+}
+
+h1 {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  color: $title;
+}
+
+p {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+img,
+iframe {
+  max-width: 100%;
+}

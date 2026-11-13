@@ -1,0 +1,16 @@
+// ============================================================
+// BOTÓN DE ABRIR EL MENÚ (hamburguesa)
+// Oculto en escritorio; lo muestra el menú al cerrarse
+// (layout/_sidenav.scss) o la media query de tablet.
+// ============================================================
+@use "../abstracts" as *;
+
+.open-nav-button {
+  display: none;
+  padding: 30px;
+  border: 0;
+  background: none;
+  color: $navy;
+  font-size: 40px;
+  cursor: pointer;
+}

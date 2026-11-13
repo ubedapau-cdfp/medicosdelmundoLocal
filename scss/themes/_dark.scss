@@ -1,0 +1,171 @@
+// ============================================================
+// TEMA OSCURO (data-theme="alt")
+// Se activa poniendo data-theme="alt" en el <html>.
+// Primero cambia los colores base (variables CSS) y luego
+// retoca los elementos que necesitan colores propios.
+// ============================================================
+@use "../abstracts" as *;
+
+// ---------- Colores del tema oscuro ----------
+:root[data-theme="alt"] {
+  color-scheme: dark;
+  --navy: #070c14; // menú lateral
+  --blue: #1b4b82; // botones, formulario de login, traductor
+  --hover-bg: #cfe6ff; // fondo al pasar el ratón / foco
+  --title: #9cc7ff; // títulos h1
+  --bg: #0f1620; // fondo de la página
+  --text: #e8eef7; // texto
+  --blue-hover-bg: #d6e9ff; // botones claros
+  --blue-hover-text: #0c2a52; // texto sobre botones claros
+}
+
+// Todo lo siguiente solo se aplica dentro de [data-theme="alt"]
+[data-theme="alt"] {
+  // ---------- BODY ----------
+  body {
+    background-color: $bg;
+    color: $text;
+  }
+
+  // El contenido y los encabezados mantienen el tema en todas las páginas
+  .main,
+  .home-page {
+    color: $text;
+
+    h1,
+    h2,
+    h3 {
+      color: $title;
+    }
+  }
+
+  // ---------- LOGIN ----------
+  // Paleta oscura con contraste WCAG AA y foco claramente visible
+  .login-body {
+    background-color: #0b1220;
+    color: #f9fafb;
+
+    .ladoDcho {
+      background-color: #0b1220;
+    }
+
+    .menuform {
+      border: 1px solid #94a3b8;
+      background-color: #111827;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+
+      .h1login,
+      label {
+        color: #f9fafb;
+      }
+
+      // El botón "Volver a Inicio" mantiene el texto oscuro también al pasar el ratón
+      a.defaultbutton {
+        &,
+        &:hover {
+          color: #0b1220;
+        }
+      }
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      border: 1px solid #cbd5e1;
+      background-color: #1f2937;
+      color: #f9fafb;
+
+      &::placeholder {
+        color: #cbd5e1;
+        opacity: 1;
+      }
+
+      &:focus-visible {
+        outline: 3px solid #fbbf24;
+        outline-offset: 2px;
+      }
+    }
+
+    .password-toggle {
+      color: #f9fafb;
+
+      &:focus-visible {
+        outline: 3px solid #fbbf24;
+        outline-offset: 2px;
+        box-shadow: none;
+      }
+    }
+
+    .defaultbutton {
+      border-color: #bfdbfe;
+      background-color: #bfdbfe;
+      color: #0b1220;
+
+      &:hover {
+        border-color: #dbeafe;
+        background-color: #dbeafe;
+        color: #0b1220;
+      }
+    }
+
+    .defaultbutton:focus-visible,
+    .theme-toggle:focus-visible {
+      outline: 3px solid #0b1220;
+      outline-offset: 3px;
+      box-shadow: 0 0 0 6px #fbbf24;
+    }
+
+    .login-alert {
+      border-color: #fda4af;
+      background-color: #3f1d24;
+      color: #ffe4e6;
+    }
+  }
+
+  // ---------- MENÚ LATERAL ----------
+  .sidenav {
+    border-right: 1px solid #2a4468;
+  }
+
+  // ---------- BOTÓN DE ABRIR ----------
+  .open-nav-button {
+    color: $text;
+  }
+
+  // ---------- ENLACES ----------
+  .main a {
+    color: #9cc7ff;
+    text-decoration: underline;
+
+    &:visited {
+      color: #c9b8ff;
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: #ffffff;
+    }
+
+    // El botón de registro no lleva subrayado y conserva su color
+    &.regbtn {
+      color: $white;
+      text-decoration: none;
+
+      &:hover,
+      &:focus-visible {
+        color: $blue-hover-text;
+      }
+    }
+  }
+
+  // ---------- RESPONSIVE ----------
+  @media (max-width: $bp-tablet) {
+    .nav-backdrop {
+      background: #000000b3;
+    }
+
+    .sidenav.is-open {
+      border-right: 1px solid #4a6a96;
+      box-shadow: 0 0 28px #000000b3;
+    }
+  }
+}

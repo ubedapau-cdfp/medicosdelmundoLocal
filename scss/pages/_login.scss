@@ -1,0 +1,113 @@
+// ============================================================
+// LOGIN
+// Código parcialmente heredado del proyecto original
+// (Médicos del Mundo, Reto 4)
+// ============================================================
+@use "../abstracts" as *;
+
+// Contenedor de las dos mitades
+.loginMenu {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+// Mitad izquierda: solo una imagen de fondo
+.ladoIzqdo {
+  background-image: url(../Imagenes/loginimage.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  flex: 0.5;
+}
+
+// Mitad derecha: fondo azul + imagen + el formulario
+.ladoDcho {
+  background-color: $blue;
+  background-image: url(../Imagenes/loginimage2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex: 1;
+  color: $white;
+  min-width: 0;
+}
+
+// Caja del formulario.
+// Los márgenes y el relleno son fluidos: a partir de 1600px valen lo de siempre
+// (250px de margen y 100px de relleno) y en pantallas menores se reducen.
+.menuform {
+  display: block;
+  background-color: $blue;
+  margin-top: 150px;
+  margin-left: clamp(20px, 15.6vw, 250px);
+  margin-right: clamp(20px, 15.6vw, 250px);
+  padding: clamp(24px, 6.25vw, 100px);
+  border-radius: 10px;
+
+  // Textos blancos dentro del formulario
+  .h1login,
+  a,
+  label {
+    color: $white;
+  }
+
+  // Los campos ocupan todo el ancho del formulario
+  input[type="text"],
+  input[type="password"] {
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  // El botón "Volver a Inicio": la regla ".menuform a" (blanco) tiene más
+  // especificidad que ".defaultbutton" y lo dejaba blanco sobre fondo claro.
+  a.defaultbutton {
+    color: $blue-hover-text;
+
+    &:hover {
+      color: $blue;
+    }
+  }
+}
+
+// Tablet: apilar la imagen y el formulario para darles espacio suficiente.
+@media (max-width: $bp-tablet) {
+  .loginMenu {
+    flex-direction: column;
+  }
+
+  .ladoIzqdo {
+    flex: none;
+    min-height: 160px;
+  }
+
+  .menuform {
+    margin: 20px;
+    padding: 24px;
+  }
+}
+
+// Móvil: reducir el bloque visual y presentar los controles en una columna.
+@media (max-width: $bp-movil) {
+  .ladoIzqdo {
+    min-height: 100px;
+  }
+
+  .menuform {
+    margin: 12px;
+    padding: 20px;
+  }
+
+  .h1login {
+    font-size: clamp(22px, 6vw, 28px);
+  }
+
+  .button-group {
+    grid-template-columns: 1fr;
+  }
+
+  .defaultbutton {
+    width: 100%;
+    max-width: 320px;
+    min-height: 44px;
+  }
+}

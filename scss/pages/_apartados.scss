@@ -1,0 +1,57 @@
+// ============================================================
+// DERECHOS INICIALES
+// ============================================================
+@use "../abstracts" as *;
+
+.apartados {
+  .intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+  }
+
+  .tema {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+
+    figure {
+      flex: 0 0 40%;
+      margin: 0;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .texto {
+      flex: 1;
+    }
+
+    h2 {
+      margin: 0 0 0.75rem;
+      font-size: 2.5rem;
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    p {
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    // En pantallas medianas, imagen arriba y texto debajo
+    @media (max-width: $bp-medio) {
+      flex-direction: column;
+
+      figure {
+        flex-basis: auto;
+        width: 100%;
+      }
+    }
+  }
+}

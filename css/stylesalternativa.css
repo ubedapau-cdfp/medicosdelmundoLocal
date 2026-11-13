@@ -1,0 +1,164 @@
+.theme-toggle {
+  display: block;
+  box-sizing: border-box;
+  width: calc(100% - 32px);
+  min-height: 40px;
+  margin: 0 16px 14px;
+  padding: 8px 10px;
+  border: 1px solid var(--white);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--white);
+  font: 700 13px "Manrope", sans-serif;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+.theme-toggle:hover, .theme-toggle:focus-visible, .theme-toggle[aria-pressed=true] {
+  background-color: var(--hover-bg);
+  color: var(--blue-hover-text);
+}
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--hover-bg);
+  outline-offset: 2px;
+}
+.theme-toggle--login {
+  width: 200px;
+  margin: 12px auto 14px;
+  border-color: var(--blue-hover-bg);
+  background-color: var(--blue-hover-bg);
+  color: var(--blue-hover-text);
+  text-align: center;
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle {
+    transition: none;
+  }
+}
+
+:root[data-theme=alt] {
+  color-scheme: dark;
+  --navy: #070c14;
+  --blue: #1b4b82;
+  --hover-bg: #cfe6ff;
+  --title: #9cc7ff;
+  --bg: #0f1620;
+  --text: #e8eef7;
+  --blue-hover-bg: #d6e9ff;
+  --blue-hover-text: #0c2a52;
+}
+
+[data-theme=alt] body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+[data-theme=alt] .main,
+[data-theme=alt] .home-page {
+  color: var(--text);
+}
+[data-theme=alt] .main h1,
+[data-theme=alt] .main h2,
+[data-theme=alt] .main h3,
+[data-theme=alt] .home-page h1,
+[data-theme=alt] .home-page h2,
+[data-theme=alt] .home-page h3 {
+  color: var(--title);
+}
+[data-theme=alt] .login-body {
+  background-color: #0b1220;
+  color: #f9fafb;
+}
+[data-theme=alt] .login-body .ladoDcho {
+  background-color: #0b1220;
+}
+[data-theme=alt] .login-body .menuform {
+  border: 1px solid #94a3b8;
+  background-color: #111827;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+[data-theme=alt] .login-body .menuform .h1login,
+[data-theme=alt] .login-body .menuform label {
+  color: #f9fafb;
+}
+[data-theme=alt] .login-body .menuform a.defaultbutton, [data-theme=alt] .login-body .menuform a.defaultbutton:hover {
+  color: #0b1220;
+}
+[data-theme=alt] .login-body input[type=text],
+[data-theme=alt] .login-body input[type=password] {
+  border: 1px solid #cbd5e1;
+  background-color: #1f2937;
+  color: #f9fafb;
+}
+[data-theme=alt] .login-body input[type=text]::placeholder,
+[data-theme=alt] .login-body input[type=password]::placeholder {
+  color: #cbd5e1;
+  opacity: 1;
+}
+[data-theme=alt] .login-body input[type=text]:focus-visible,
+[data-theme=alt] .login-body input[type=password]:focus-visible {
+  outline: 3px solid #fbbf24;
+  outline-offset: 2px;
+}
+[data-theme=alt] .login-body .password-toggle {
+  color: #f9fafb;
+}
+[data-theme=alt] .login-body .password-toggle:focus-visible {
+  outline: 3px solid #fbbf24;
+  outline-offset: 2px;
+  box-shadow: none;
+}
+[data-theme=alt] .login-body .defaultbutton {
+  border-color: #bfdbfe;
+  background-color: #bfdbfe;
+  color: #0b1220;
+}
+[data-theme=alt] .login-body .defaultbutton:hover {
+  border-color: #dbeafe;
+  background-color: #dbeafe;
+  color: #0b1220;
+}
+[data-theme=alt] .login-body .defaultbutton:focus-visible,
+[data-theme=alt] .login-body .theme-toggle:focus-visible {
+  outline: 3px solid #0b1220;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px #fbbf24;
+}
+[data-theme=alt] .login-body .login-alert {
+  border-color: #fda4af;
+  background-color: #3f1d24;
+  color: #ffe4e6;
+}
+[data-theme=alt] .sidenav {
+  border-right: 1px solid #2a4468;
+}
+[data-theme=alt] .open-nav-button {
+  color: var(--text);
+}
+[data-theme=alt] .main a {
+  color: #9cc7ff;
+  text-decoration: underline;
+}
+[data-theme=alt] .main a:visited {
+  color: #c9b8ff;
+}
+[data-theme=alt] .main a:hover, [data-theme=alt] .main a:focus-visible {
+  color: #ffffff;
+}
+[data-theme=alt] .main a.regbtn {
+  color: var(--white);
+  text-decoration: none;
+}
+[data-theme=alt] .main a.regbtn:hover, [data-theme=alt] .main a.regbtn:focus-visible {
+  color: var(--blue-hover-text);
+}
+@media (max-width: 900px) {
+  [data-theme=alt] .nav-backdrop {
+    background: rgba(0, 0, 0, 0.7019607843);
+  }
+  [data-theme=alt] .sidenav.is-open {
+    border-right: 1px solid #4a6a96;
+    box-shadow: 0 0 28px rgba(0, 0, 0, 0.7019607843);
+  }
+}
+
+/*# sourceMappingURL=stylesalternativa.css.map */

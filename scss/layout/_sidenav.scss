@@ -1,0 +1,99 @@
+// ============================================================
+// MENÚ LATERAL
+// ============================================================
+@use "../abstracts" as *;
+
+.sidenav {
+  height: 100%;
+  width: 260px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: $navy;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-top: 20px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  transition: width 0.5s;
+
+  // Menú cerrado
+  &.is-closed {
+    width: 0;
+    visibility: hidden; // los enlaces dejan de ser tabulables al cerrar
+    transition: width 0.5s, visibility 0s linear 0.5s;
+
+    // Cuando el menú se cierra, el contenido ocupa todo el ancho
+    ~ .main {
+      margin-left: 0;
+
+      // y aparece el botón de abrir menú
+      .open-nav-button {
+        display: block;
+      }
+    }
+  }
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 16px 20px 30px;
+}
+
+.logo {
+  display: block;
+  max-width: 160px;
+  height: auto;
+}
+
+.closebtn {
+  color: $white;
+  font-size: 24px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+// Quitamos viñetas y márgenes de todas las listas del menú
+.menu,
+.submenu,
+.dropdown-content {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu {
+  li {
+    margin-bottom: 6px;
+  }
+
+  a {
+    padding: 8px 10px 8px 16px;
+    text-decoration: none;
+    font-size: 16px;
+    color: $white;
+    display: block;
+
+    &:hover,
+    &:focus-visible {
+      @include menu-hover;
+      transition: background-color 0.2s, color 0.2s;
+    }
+  }
+}
+
+.submenu {
+  padding-left: 16px;
+
+  a {
+    font-size: 14px;
+  }
+}
+
+// Capa oscura detrás del menú: la crea openSidebar.js y solo se ve en tablet/móvil
+.nav-backdrop {
+  display: none;
+}
