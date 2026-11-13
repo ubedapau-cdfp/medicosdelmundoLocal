@@ -463,17 +463,20 @@ input[type=text], input[type=password]{
 
 .button-group{
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 8px;
 }
 
 .button-group .defaultbutton {
     width: 100%;
     min-width: 0;
-    margin-bottom: 15px;
-    padding: 0 4px;
-    font-size: clamp(12px, 1vw, 17px);
-    white-space: nowrap;
+    height: auto;          /* antes fijo en 40px: ahora puede crecer si el texto se parte */
+    min-height: 40px;
+    margin-bottom: 0;      /* el espacio lo da ahora el gap */
+    padding: 6px 8px;
+    font-size: 15px;
+    white-space: normal;   /* antes nowrap: era lo que cortaba el texto */
+    text-align: center;
 }
 
 .defaultbutton a{

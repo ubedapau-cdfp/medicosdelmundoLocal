@@ -1,3 +1,4 @@
+
 /* ---------- BOTÓN CAMBIO TEMA ---------- */
 .theme-toggle {
   display: block;
@@ -175,6 +176,10 @@
 [data-theme="alt"] .main a:focus-visible {
   color: #ffffff;
 }
+
+[data-theme="alt"] .main a.regbtn{color:var(--white);text-decoration:none}
+[data-theme="alt"] .main a.regbtn:hover,
+[data-theme="alt"] .main a.regbtn:focus-visible{color:var(--blue-hover-text)}
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 900px) {
